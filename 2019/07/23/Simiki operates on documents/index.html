@@ -13,8 +13,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<link rel="alternate" href="/default" title="Hexo"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
-<link rel="canonical" href="http://yoursite.com/">
+<meta name="description" content="documents"><link rel="alternate" href="/default" title="Hexo"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://yoursite.com/2019/07/23/Simiki operates on documents/">
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
@@ -37,7 +37,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":false};
 </script>
 
-    <title>Hexo</title>
+    <title>documents - Hexo</title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -72,9 +72,9 @@
 
       <main id="main" class="main">
         <div class="content-wrapper">
-          <div id="content" class="content"><section id="posts" class="posts"><article class="post">
+          <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/07/23/Simiki operates on documents/">documents</a>
+      <h1 class="post-title">documents
         </h1>
 
       <div class="post-meta">
@@ -83,7 +83,12 @@
         </span></div>
     </header>
 
-    <div class="post-content"><h2 id="Simiki-operates-on-documents"><a href="#Simiki-operates-on-documents" class="headerlink" title="Simiki operates on documents"></a>Simiki operates on documents</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Simiki-operates-on-documents"><span class="toc-text">Simiki operates on documents</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速开始"><span class="toc-text">快速开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用问题"><span class="toc-text">使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署在服务器上"><span class="toc-text">部署在服务器上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h2 id="Simiki-operates-on-documents"><a href="#Simiki-operates-on-documents" class="headerlink" title="Simiki operates on documents"></a>Simiki operates on documents</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
 <h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><ul>
 <li>使用 Python 环境安装：<code>pip install simiki</code>，因为simiki是使用 Python2 开发的。因为 windows 不是很好的支持 simiki，导致我现在安装不上这个模板。然后在命令行中允许 pip install simiki，但是总是报错：<code>Cannot uninstall &#39;PyYAML&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code>，于是我在Andconda 中搜索 PyYAML 这个库，找到<code>D:\andconda\pkgs\pyyaml-3.13-py37hfa6e2cd_0\Lib\site-packages\PyYAML-3.13-py3.7.egg-info</code>，将此文件删除后，再重新运行 <code>pip install simiki</code>。</li>
 <li>新建目录 myWiki：<code>mkdir myWiki</code></li>
@@ -132,91 +137,29 @@
 </ul>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里面 Simiki 相当于一个博客汇总系统，我需要将每篇文章写好之后进行一个上传和更新，然后它按照他的要求和格式进行一个排版，然后是使用 IIS 进行一个远程的访问。这样子的话其实之后的部署除非要使用到数据库交互的，否则如果只是静态页面的话完全可以使用 IIS 来部署，感觉是非常好的一个东西，比如我做一个可视化的Web 加到 SIMIKi 里面去一个超链接，然后把本地的CSS 和 JS修改一些符合我的效果，到最后的话也可以自己写一个脚本进行静态 HTML 文件的转化和创建因为这个东西都比较的简单，不像前端一样那么的复杂，这也可以算作是博客系统开发的另一个方向吧。</p>
 
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/07/23/common-sorting-algorithm/">common-sorting-algorithm</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-07-23
-        </span></div>
-    </header>
-
-    <div class="post-content"><h3 id="排序-未完成"><a href="#排序-未完成" class="headerlink" title="排序-未完成"></a>排序-未完成</h3><p>分类<br>1.最快最简单的桶排序<br>2.冒泡排序<br>3.STL 快排</p>
-<h4 id="1-如何使用STL-sort-快排"><a href="#1-如何使用STL-sort-快排" class="headerlink" title="1-如何使用STL sort 快排"></a>1-如何使用STL sort 快排</h4><p>为什么要使用STL的快速排序，因为有的时候冒泡、选择等算法的复杂度为 O(N^2)会超时，而快速排序的复杂度为 O (N log N)。<br>sort在 <algorithm>库里面，原型如下：</algorithm></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span>(<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span>);</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>,<span class="title">class</span> <span class="title">Compare</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span> (<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span> ,<span class="title">Compare</span> <span class="title">comp</span>);</span></span><br></pre></td></tr></table></figure>
-
-<p>sort排序有两种形式，一个有三个参数，一个有两个参数。Sort的前两个参数是起始地址和中止地址。<br><br>如 <code>sort(a,a+n)</code>表示对a[0] , a[1] , a[2] … a[n-1] 排序 ，默认的是升序的。<br></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] =&#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line">    sort(<span class="built_in">array</span>,<span class="built_in">array</span>+<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span>  i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    # 延迟关闭cmd</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要实现降序的话就要用到第三个参数，第三个参数是一个比较函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面就是降序排序的比较函数，意思：是 a&gt;b 时为 true，就不交换，a&lt;b时为 false，交换。然后在 sort（a,a+5,cmp）即可进行排序。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] =&#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line">    sort(<span class="built_in">array</span>,<span class="built_in">array</span>+<span class="number">5</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span>  i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/07/23/kaggle-movie-reviews/">Kaggle-Senment Analysis on Moview Reviews</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-07-23
-        </span></div>
-    </header>
-
-    <div class="post-content"><h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><blockquote>
-<p>之前以为Kaggle是一个对机器学习算法理解要求很高的网站，需要对机器学习有一定的了解（这也是是否能将机器学习应用到实际开发中的能力需求），需要自己熟练的使用各种算法，理解并且能够推导算法的核心部分才能够解决问题，于是对于算法的学习有些畏惧，一是太多太难，二是认为《机器学习实战》的实例好像也挺简单的，并没有真正的讲解算法的应用背景（虽然筛选约会对象的例子十分的不错），于是觉得学习起来并没有什么奔头（枯燥的学习算法而且还不知道该如何去使用确实是难以忍受，但是回过头来想想，如果可以扎实的学完《机器学习实战》这本书，后续直接进入实战是非常的快的。）。便想着学习下Kaggle上的实际案例，通过学习案例中的算法的使用方法来推动算法的学习，是为背景。</p>
-</blockquote>
-          <div class="read-more">
-            <a href="/2019/07/23/kaggle-movie-reviews/" class="read-more-link">阅读更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/07/23/k-nearest-neighbor/">k-nearest-neighbor</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-07-23
-        </span></div>
-    </header>
-
-    <div class="post-content"><h2 id="一、KNN概述"><a href="#一、KNN概述" class="headerlink" title="一、KNN概述"></a>一、KNN概述</h2><p>简单的说，k-近邻算法采用测量不同特征值之间的距离方法进行分类。</p>
-<ol>
-<li>优点：精度高、对异常值不敏感、无数据输入假定</li>
-<li>缺点：计算复杂度高、空间复杂度高</li>
-<li>适用数据范围：数值型和标称型</li>
-</ol>
-          <div class="read-more">
-            <a href="/2019/07/23/k-nearest-neighbor/" class="read-more-link">阅读更多</a>
-          </div>
-        </div></article>
-      <article class="post">
-    <header class="post-header">
-      <h1 class="post-title"><a class="post-link" href="/2019/07/23/Hexo-Github-1/">Hexo-Github</a>
-        </h1>
-
-      <div class="post-meta">
-        <span class="post-time">
-          2019-07-23
-        </span></div>
-    </header>
-
-    <div class="post-content"><ul>
-<li>被Simiki折腾的不行，实在是受不了了</li>
-<li>csdn太多广告了</li>
-<li>发现了一个好看的hexo主题：<a href="https://jdhao.github.io/tags/" target="_blank" rel="noopener">jdhao`s blog</a></li>
-</ul>
-          <div class="read-more">
-            <a href="/2019/07/23/Hexo-Github-1/" class="read-more-link">阅读更多</a>
-          </div>
-        </div></article>
-      <nav class="pagination"></nav></section></div></div>
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://yoursite.com">John Doe</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://yoursite.com/2019/07/23/Simiki operates on documents/">http://yoursite.com/2019/07/23/Simiki operates on documents/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="next" href="/2019/07/23/common-sorting-algorithm/">
+        <span class="next-text nav-default">common-sorting-algorithm</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
       </main>
 
       <footer id="footer" class="footer"><div class="social-links"><a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
