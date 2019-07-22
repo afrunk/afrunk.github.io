@@ -84,54 +84,9 @@
     </header>
 
     <div class="post-content"><h2 id="Simiki-operates-on-documents"><a href="#Simiki-operates-on-documents" class="headerlink" title="Simiki operates on documents"></a>Simiki operates on documents</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
-<h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><ul>
-<li>使用 Python 环境安装：<code>pip install simiki</code>，因为simiki是使用 Python2 开发的。因为 windows 不是很好的支持 simiki，导致我现在安装不上这个模板。然后在命令行中允许 pip install simiki，但是总是报错：<code>Cannot uninstall &#39;PyYAML&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code>，于是我在Andconda 中搜索 PyYAML 这个库，找到<code>D:\andconda\pkgs\pyyaml-3.13-py37hfa6e2cd_0\Lib\site-packages\PyYAML-3.13-py3.7.egg-info</code>，将此文件删除后，再重新运行 <code>pip install simiki</code>。</li>
-<li>新建目录 myWiki：<code>mkdir myWiki</code></li>
-<li>进入目录，并初始化：<code>cd myWiki &amp;&amp; simiki init</code></li>
-<li>渲染 Wiki：<code>simiki g</code></li>
-<li>本地预览：<code>simiki p</code></li>
-<li>创建新的文件：<code>simiki n -t “标题” -c 分类</code></li>
-<li>如何更换主题：将下载下来的主题存放在Wiki\themes文件夹下即可，然后在_config.yml 文件中修改 theme后面的文件名即可。</li>
-<li>如何创建下一步分类：simiki n -t “Django Admin Mooc Project” -c Project\Django 这样子就可以将我们新建的<code>Django Admin Mooc Project</code> 存放在 Project下的 Django 目录下！但是存在一个问题就是我们在目录页面点击分类下的文章时会出现无法找到HTML的情况，于是我把output文件夹下的 Django 文件夹中文件就拉出来了，然后把Django文件夹删掉之后就可以正常访问了，不知道会不会在后续的更新的时候带来什么不便，反正我这个暂时只是放在自己的本地访问查看总结即可，没有那么多的名堂。</li>
-</ul>
-<p>看来是 Python 版本的问题，Simiki 暂时不支持 Python 3.7 ，所以我就又重新安装了一个 Python 2.7 ，<del>但是吧有点麻烦的是我需要进入 Python 2的命令行的时候就需要打开 Anaconda，这就是很麻烦的一件事情。</del> 使用虚拟环境管理工具，我只需要在 Pycharm 的 Terminal 中输入 <code>activate python2</code> 即可激活我们的虚拟环境，如果想要关闭的话输入<code>conda.bat deactivate</code>即可。然后就是本地预览的地址是：<code>localhost:8000</code>，但是为什么就不能够提示一下呢？很烦，折腾了很久。</p>
-<h3 id="使用问题"><a href="#使用问题" class="headerlink" title="使用问题"></a>使用问题</h3><ul>
-<li><strong>如何启动Simiki</strong>：隔了一段时间后再使用Simike来记录学习的内容发现都忘记了如何来启动Simiki，我们打开Pycharm即可，然后进入Terminal之后输入 <code>activate python2</code>，然后进入到我们的存放Simiki的目录下去<code>E:\Simiki\Wiki</code>，启动项目<code>simiki p</code><ul>
-<li>发现不使用Anaconda的话就不能够使用上面的语句来激活虚拟环境了，那么我就需要在基于python2的环境下新建一个虚拟环境然后进行开发和部署，然后突然发现为什么在服务器的pycharm上创建了虚拟环境之后，关闭之前的Termial之后再打开进入的就是虚拟环境了。不过也不去深究了。</li>
-</ul>
-</li>
-<li><strong>如何更新数据</strong>：上面对于生成数据已经讲得很清晰了，但是对于更新数据并没有十分的清晰。我们只需要进入到上面存放md文件的目录下将我们所不需要的文件进行删除，然后输入<code>simiki g</code>，在输入<code>simiki p</code>即可将我们所需要删除的部分删除掉了。</li>
-<li><strong>如何像Blog一样进行分类管理</strong>：blog还是适合写一些某一个问题的建议、或者某一个小方面的研究学习、亦或者是生活上的事情。写完就固定化下来了；wiki适合每一篇针对一个专题系统性的总结，比如读书笔记，某门语言或框架的学习。适合后续还会继续完善、补充和修改。我个人目前同时在维护自己的blog和wiki，一些blog上的问题也会以链接的方式或者直接复制到wiki上。所以我建议你也分开维护，会更简单一些。</li>
-<li><strong>使用VScode开发会导致乱码问题，无论如何都无法提交，所以推荐使用Sublime Text 3进行编写md文件。</strong></li>
-</ul>
-<h3 id="部署在服务器上"><a href="#部署在服务器上" class="headerlink" title="部署在服务器上"></a>部署在服务器上</h3><ul>
-<li>实现方法：使用的IIS的网站部署（之前学习的时候知道它可以用来部署局域网的网站，但是没想到原来服务器部署也是这样子的。我都没有理解到，更何况别的同学了，现代教育就是这样子的嘛？）<ul>
-<li><strong>第一步 安装IIS</strong>：首先是在阿里云的帮助文档中搜索如何在服务器上安装IIS，然后是照着<a href="https://help.aliyun.com/knowledge_detail/40918.html?spm=5176.11065259.1996646101.searchclickresult.5d5b7a2e3dpIcg" target="_blank" rel="noopener">这篇文章</a>新建一个站点，将我们的Simiki的文件夹添加进去即可。</li>
-<li><strong>第二步 实现公网访问网站：</strong> 添加进去之后我们使用的内网Ip和本地的Ip是可以访问项目了，但是却无法在我的电脑上访问到项目，然后是照着<a href="https://help.aliyun.com/knowledge_detail/40914.html?spm=5176.10695662.1996646101.searchclickresult.7f062b52Qum9rB" target="_blank" rel="noopener">这篇文章</a>进入安全组新建一组安全规则，之后我就可以通过公网Ip进行访问了。<ul>
-<li>参考文章<a href="https://blog.csdn.net/kairen6645/article/details/80590530" target="_blank" rel="noopener">：阿里云ECS IIS配置网站后，localhost以及内网能够访问，公网iP不能访问</a></li>
-</ul>
-</li>
-<li><strong>第三步 解决CSS文件不匹配的问题：仍然只能看到HTML文件，CSS文件并没有支持。</strong> 如何解决端口问题就可以解决网站静态文件不匹配的问题<ul>
-<li><del>一个原因是打开或关闭window功能中的Internert信息服务里的万维网服务=》常见HTTP功能=&gt;静态功能</del></li>
-<li><strong>第一次尝试：</strong>我首先使用的是 8080 端口，这个端口和Simiki的本地端口是一样的，这时候我是无论使用内网IP还是公网IP都可以在服务器上访问到没有问题的网站，但是在我的本地电脑上无论是公网IP还是内网IP都是无效的。于是我就参考了第二步觉得是公网IP没有访问权限的问题，我新建了一个安全组规则之后公网IP可以访问了，但是这里的首页是一个文件夹？我每个文件都点进去看了下，发现有些文件无法打开，因为使用了无法识别的一些语法，这里我在IIS里新建网站的时候的路径是<code>C:\Python\Simiki</code> ，于是我觉得不对劲，我开始了第二次尝试。</li>
-<li><strong>第二次尝试：</strong> 我这次看了太多的IIS文档了，然后就觉得还是 8080 端口的好一些，于是我又新建了一个网站，然后把这次新建网站的路径修改为存放静态文件的，就没有别的代码的纯洁路径了 <code>C:\Python\Simiki\output</code> ，然后我们重新在服务器上用内网和公网都测试了下终于静态文件全部都有了，该有的样子都挺好，但是我在本地电脑上是访问不到该网站的。于是我开始了第三次尝试。</li>
-<li><strong>第三次尝试：</strong> 我将端口好修改为默认的 80 ，然后我再次尝试发现本地电脑是可以访问成功的了，而且效果还不错。这个让我很难受，<strong>因为我根本不明白为什么端口会带来这么多的问题，而且也不明白为什么直接读取的静态文件夹之后IIS就会将首页展示出来呢？</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>参考文章：<ul>
-<li><a href="https://jingyan.baidu.com/album/86f4a73ea5bf6c37d6526932.html?picindex=2" target="_blank" rel="noopener">如何通过修改端口实现外网访问服务器本地项目</a></li>
-<li><a href="https://cloud.tencent.com/document/product/213/2755?from=10680" target="_blank" rel="noopener">如何配置服务器的IIS</a>——腾讯云</li>
-</ul>
-</li>
-<li>推荐文章：<ul>
-<li><a href="https://sthsf.github.io/wiki/" target="_blank" rel="noopener">将Wiki部署在github上，同步起来非常方便后续可以尝试下。</a></li>
-</ul>
-</li>
-</ul>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里面 Simiki 相当于一个博客汇总系统，我需要将每篇文章写好之后进行一个上传和更新，然后它按照他的要求和格式进行一个排版，然后是使用 IIS 进行一个远程的访问。这样子的话其实之后的部署除非要使用到数据库交互的，否则如果只是静态页面的话完全可以使用 IIS 来部署，感觉是非常好的一个东西，比如我做一个可视化的Web 加到 SIMIKi 里面去一个超链接，然后把本地的CSS 和 JS修改一些符合我的效果，到最后的话也可以自己写一个脚本进行静态 HTML 文件的转化和创建因为这个东西都比较的简单，不像前端一样那么的复杂，这也可以算作是博客系统开发的另一个方向吧。</p>
-
+          <div class="read-more">
+            <a href="/2019/07/23/Simiki operates on documents/" class="read-more-link">阅读更多</a>
+          </div>
         </div></article>
       <article class="post">
     <header class="post-header">
@@ -145,17 +100,9 @@
     </header>
 
     <div class="post-content"><h3 id="排序-未完成"><a href="#排序-未完成" class="headerlink" title="排序-未完成"></a>排序-未完成</h3><p>分类<br>1.最快最简单的桶排序<br>2.冒泡排序<br>3.STL 快排</p>
-<h4 id="1-如何使用STL-sort-快排"><a href="#1-如何使用STL-sort-快排" class="headerlink" title="1-如何使用STL sort 快排"></a>1-如何使用STL sort 快排</h4><p>为什么要使用STL的快速排序，因为有的时候冒泡、选择等算法的复杂度为 O(N^2)会超时，而快速排序的复杂度为 O (N log N)。<br>sort在 <algorithm>库里面，原型如下：</algorithm></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span>(<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span>);</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>,<span class="title">class</span> <span class="title">Compare</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span> (<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span> ,<span class="title">Compare</span> <span class="title">comp</span>);</span></span><br></pre></td></tr></table></figure>
-
-<p>sort排序有两种形式，一个有三个参数，一个有两个参数。Sort的前两个参数是起始地址和中止地址。<br><br>如 <code>sort(a,a+n)</code>表示对a[0] , a[1] , a[2] … a[n-1] 排序 ，默认的是升序的。<br></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] =&#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line">    sort(<span class="built_in">array</span>,<span class="built_in">array</span>+<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span>  i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    # 延迟关闭cmd</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要实现降序的话就要用到第三个参数，第三个参数是一个比较函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面就是降序排序的比较函数，意思：是 a&gt;b 时为 true，就不交换，a&lt;b时为 false，交换。然后在 sort（a,a+5,cmp）即可进行排序。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] =&#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line">    sort(<span class="built_in">array</span>,<span class="built_in">array</span>+<span class="number">5</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span>  i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <div class="read-more">
+            <a href="/2019/07/23/common-sorting-algorithm/" class="read-more-link">阅读更多</a>
+          </div>
         </div></article>
       <article class="post">
     <header class="post-header">
