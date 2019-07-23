@@ -13,10 +13,13 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="Simiki Wiki"><meta name="keywords" content="Blog, Hexo"><link rel="alternate" href="/default" title="Hexo"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
-<link rel="canonical" href="http://yoursite.com/2019/07/23/Simiki operates on documents/">
+<meta name="description" content="Simiki operates on documents"><meta name="keywords" content="Blog, 天道宫"><link rel="alternate" href="/default" title="天道宫"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.com/2019/07/23/Simiki operates on documents/">
 
-<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 <link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
 
 <script id="baidu_push">
@@ -34,15 +37,15 @@
 })();
 </script>
 <script>
-  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":false};
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
 </script>
 
-    <title>Simiki operates on documents - Hexo</title>
+    <title>Simiki operates on documents - 天道宫</title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
   <div class="mobile-header-logo">
-    <a href="/." class="logo">Hexo</a>
+    <a href="/." class="logo">天道宫</a>
   </div>
   <div class="mobile-navbar-icon">
     <span></span>
@@ -53,18 +56,50 @@
 
 <nav id="mobile-menu" class="mobile-menu slideout-menu">
   <ul class="mobile-menu-list"><a href="/">
-        <li class="mobile-menu-item">首页
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
           </li>
       </a></ul>
 </nav>
 <div class="container" id="mobile-panel">
       <header id="header" class="header"><div class="logo-wrapper">
-  <a href="/." class="logo">Hexo</a>
+  <a href="/." class="logo">天道宫</a>
 </div>
 
 <nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
           <a class="menu-item-link" href="/">
-            首页
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
             </a>
         </li>
       </ul></nav>
@@ -89,6 +124,8 @@
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础配置"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速开始"><span class="toc-text">快速开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用问题"><span class="toc-text">使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署在服务器上"><span class="toc-text">部署在服务器上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
     </div>
   </div><div class="post-content"><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
+<a id="more"></a>
+
 <h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><ul>
 <li>使用 Python 环境安装：<code>pip install simiki</code>，因为simiki是使用 Python2 开发的。因为 windows 不是很好的支持 simiki，导致我现在安装不上这个模板。然后在命令行中允许 pip install simiki，但是总是报错：<code>Cannot uninstall &#39;PyYAML&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code>，于是我在Andconda 中搜索 PyYAML 这个库，找到<code>D:\andconda\pkgs\pyyaml-3.13-py37hfa6e2cd_0\Lib\site-packages\PyYAML-3.13-py3.7.egg-info</code>，将此文件删除后，再重新运行 <code>pip install simiki</code>。</li>
 <li>新建目录 myWiki：<code>mkdir myWiki</code></li>
@@ -141,11 +178,11 @@
       <div class="post-copyright">
     <p class="copyright-item">
       <span>原文作者: </span>
-      <a href="http://yoursite.com">John Doe</a>
+      <a href="http://afrunk.github.com">Afrunk</a>
     </p>
     <p class="copyright-item">
       <span>原文链接: </span>
-      <a href="http://yoursite.com/2019/07/23/Simiki operates on documents/">http://yoursite.com/2019/07/23/Simiki operates on documents/</a>
+      <a href="http://afrunk.github.com/2019/07/23/Simiki operates on documents/">http://afrunk.github.com/2019/07/23/Simiki operates on documents/</a>
     </p>
     <p class="copyright-item">
       <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
@@ -157,7 +194,7 @@
             </div>
         
         <nav class="post-nav"><a class="next" href="/2019/07/23/common-sorting-algorithm/">
-        <span class="next-text nav-default">common-sorting-algorithm</span>
+        <span class="next-text nav-default">Common Sorting Algorithm</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
       </a>
@@ -165,8 +202,8 @@
     </article></div><div class="comments" id="comments"></div></div>
       </main>
 
-      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:your@email.com" class="iconfont icon-email" title="email"></a>
-        <a href="https://github.com/ahonn" class="iconfont icon-github" title="github"></a>
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
         <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
     </div><div class="copyright">
   <span class="power-by">
@@ -178,10 +215,10 @@
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
-  <span class="copyright-year">&copy;2015 - 2019<span class="heart">
+  <span class="copyright-year">&copy;2019<span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
-    <span class="author">John Doe</span>
+    <span class="author">Afrunk</span>
   </span>
 </div>
 </footer>
