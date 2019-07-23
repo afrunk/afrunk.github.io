@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="documents"><link rel="alternate" href="/default" title="Hexo"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<meta name="description" content="Simiki Wiki"><meta name="keywords" content="Blog, Hexo"><link rel="alternate" href="/default" title="Hexo"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
 <link rel="canonical" href="http://yoursite.com/2019/07/23/Simiki operates on documents/">
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css">
@@ -37,7 +37,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":false};
 </script>
 
-    <title>documents - Hexo</title>
+    <title>Simiki operates on documents - Hexo</title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -74,7 +74,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">documents
+      <h1 class="post-title">Simiki operates on documents
         </h1>
 
       <div class="post-meta">
@@ -86,10 +86,9 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Simiki-operates-on-documents"><span class="toc-text">Simiki operates on documents</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速开始"><span class="toc-text">快速开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用问题"><span class="toc-text">使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署在服务器上"><span class="toc-text">部署在服务器上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础配置"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速开始"><span class="toc-text">快速开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用问题"><span class="toc-text">使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署在服务器上"><span class="toc-text">部署在服务器上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
     </div>
-  </div><div class="post-content"><h2 id="Simiki-operates-on-documents"><a href="#Simiki-operates-on-documents" class="headerlink" title="Simiki operates on documents"></a>Simiki operates on documents</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
-<a id="more"></a>
+  </div><div class="post-content"><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
 <h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><ul>
 <li>使用 Python 环境安装：<code>pip install simiki</code>，因为simiki是使用 Python2 开发的。因为 windows 不是很好的支持 simiki，导致我现在安装不上这个模板。然后在命令行中允许 pip install simiki，但是总是报错：<code>Cannot uninstall &#39;PyYAML&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code>，于是我在Andconda 中搜索 PyYAML 这个库，找到<code>D:\andconda\pkgs\pyyaml-3.13-py37hfa6e2cd_0\Lib\site-packages\PyYAML-3.13-py3.7.egg-info</code>，将此文件删除后，再重新运行 <code>pip install simiki</code>。</li>
 <li>新建目录 myWiki：<code>mkdir myWiki</code></li>
@@ -153,6 +152,9 @@
     </p>
   </div>
       <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Blog/">Blog</a>
+            </div>
         
         <nav class="post-nav"><a class="next" href="/2019/07/23/common-sorting-algorithm/">
         <span class="next-text nav-default">common-sorting-algorithm</span>
