@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="BIT 《Python机器学习应用》"><meta name="keywords" content="Machine Learning, Clusering, Dimension Reduction, Classification, Regression, Reinforecement, 天道宫"><link rel="alternate" href="/default" title="天道宫"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.io/2019/07/24/BIT-Python机器学习应用/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
+</script>
+
+    <title>BIT 《Python机器学习应用》 - 天道宫</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">天道宫</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">天道宫</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">BIT 《Python机器学习应用》
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-07-24
+        </span><span class="post-category">
+            <a href="/categories/Machine-Learning-Course-Notes/">Machine Learning Course & Notes</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-1-Basics-Knowledge"><span class="toc-text">Part 1:Basics Knowledge</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Machine-Learning-classification"><span class="toc-text">1.Machine Learning classification:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-scikit-learn"><span class="toc-text">2.scikit-learn </span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-2-UnSupervised-Learning"><span class="toc-text">Part 2:UnSupervised Learning</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Clusering"><span class="toc-text">1-Clusering</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-常用距离测量方法"><span class="toc-text">1.1 常用距离测量方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-sklearn-cluster"><span class="toc-text">1.2 sklearn.cluster</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Dimension-Reduction"><span class="toc-text">2-Dimension Reduction</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><p>Imagine a shawllow understanding of Machine Learning and Sklearn tools through this course,build some knowledge Graph for subsequent Kaggle tutorials and Sklearn tools.<br>Including <code>Clusering</code>、<code>Dimension Reduction</code>、<code>Classification</code>、<code>Regression</code>、<code>Reinforecement Learning</code>.</p>
+<a id="more"></a>
+
+<p>Course ulr：<a href="https://www.icourse163.org/course/BIT-1001872001" target="_blank" rel="noopener">Python 机器学习应用</a><br>Code &amp; Files：<a href="https://github.com/caiiiac/Machine-Learning-with-Python" target="_blank" rel="noopener">Machine Learning with Python</a></p>
+<h2 id="Part-1-Basics-Knowledge"><a href="#Part-1-Basics-Knowledge" class="headerlink" title="Part 1:Basics Knowledge"></a>Part 1:Basics Knowledge</h2><h3 id="1-Machine-Learning-classification"><a href="#1-Machine-Learning-classification" class="headerlink" title="1.Machine Learning classification:"></a>1.Machine Learning classification:</h3><ul>
+<li>Supervised Learning : label</li>
+<li>UnSupervised Learning : No label</li>
+<li>Reinforcement Learning : Observe the feedback</li>
+<li>Semi-supervised Learning : Between supervised learning and unsupervised learning</li>
+<li>Deep Learning:neural network model</li>
+</ul>
+<h3 id="2-scikit-learn"><a href="#2-scikit-learn" class="headerlink" title="2.scikit-learn "></a>2.<a href="https://scikit-learn.org/stable/index.html#" target="_blank" rel="noopener">scikit-learn </a></h3><p>scikit-learn Machine Learning in Python </p>
+<ul>
+<li>Simple and efficient tools for data mining and data analysis</li>
+<li>Built on NumPy,SciPy,and matplotlib</li>
+</ul>
+<p><strong>Scikit-learn common function</strong></p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Application</th>
+<th>Algorithm</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Classification</td>
+<td>异常检测,图像识别</td>
+<td>KNN,SVM,etc</td>
+</tr>
+<tr>
+<td>Clustering</td>
+<td>图像分隔，群体划分</td>
+<td>K-Means，谱聚类，etc</td>
+</tr>
+<tr>
+<td>Regression</td>
+<td>价格预测，趋势预测</td>
+<td>线性回归，SVR,etc</td>
+</tr>
+<tr>
+<td>Dimension Reduction</td>
+<td>可视化</td>
+<td>PCS,NMF,etc</td>
+</tr>
+</tbody></table>
+<p><strong>Dataset</strong></p>
+<ul>
+<li>波士顿房价数据集：sklearn.datasets.load_boston</li>
+<li>鸢尾花数据集</li>
+<li>手写数字数据集</li>
+</ul>
+<p><strong>sklearn Basics Function</strong></p>
+<ul>
+<li>Classification</li>
+<li>Clustering</li>
+<li>Regression</li>
+<li>Dimension Reduction</li>
+<li>Model Select</li>
+<li>Data preprocessing</li>
+</ul>
+<h2 id="Part-2-UnSupervised-Learning"><a href="#Part-2-UnSupervised-Learning" class="headerlink" title="Part 2:UnSupervised Learning"></a>Part 2:UnSupervised Learning</h2><p>利用无标签的数据学习数据的分布或数据与数据之间的关系被称为无监督学习，Supervised Learning 和 UnSupervised Learning 之间的最大区别在于是否有标签。无监督学习最常用的场景是 Clustering（聚类） 和 Dimension Reduction（降类）</p>
+<h3 id="1-Clusering"><a href="#1-Clusering" class="headerlink" title="1-Clusering"></a>1-Clusering</h3><p>Clusering 就是根据数据的相似性将数据分为多类的过程。评估两个不太样本之间的相似性，通常使用的方法就是计算两个样本之间的距离。使用不同的方法计算样本间的距离会关系到Clusering 结果的好坏。</p>
+<h4 id="1-1-常用距离测量方法"><a href="#1-1-常用距离测量方法" class="headerlink" title="1.1 常用距离测量方法"></a>1.1 常用距离测量方法</h4><ul>
+<li>欧式距离</li>
+<li>曼哈顿距离</li>
+<li>马氏距离</li>
+<li>余弦相似度</li>
+</ul>
+<h4 id="1-2-sklearn-cluster"><a href="#1-2-sklearn-cluster" class="headerlink" title="1.2 sklearn.cluster"></a>1.2 sklearn.cluster</h4><table>
+<thead>
+<tr>
+<th>算法名称</th>
+<th>参数</th>
+<th>可扩展性</th>
+<th>相似性度量</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>K-means</td>
+<td>聚类个数</td>
+<td>大规模数据</td>
+<td>点间距离</td>
+</tr>
+<tr>
+<td>DBSCAN</td>
+<td>邻域大小</td>
+<td>大规模数据</td>
+<td>点间距离</td>
+</tr>
+<tr>
+<td>Gaussiaa MixTures</td>
+<td>聚类个数及其它超参</td>
+<td>复杂度高，不适合处理大规模数据</td>
+<td>马氏距离</td>
+</tr>
+<tr>
+<td>Birch</td>
+<td>分支因子，阈值等其他超参</td>
+<td>大规模数据</td>
+<td>两点间的欧氏距离</td>
+</tr>
+</tbody></table>
+<h3 id="2-Dimension-Reduction"><a href="#2-Dimension-Reduction" class="headerlink" title="2-Dimension Reduction"></a>2-Dimension Reduction</h3><p>Dimension Reduction 就是在保证数据所具有的代表性特性或者分布的情况下，将高维数据转化未低维数据的过程。</p>
+<ul>
+<li>数据的可视化</li>
+<li>精简数据</li>
+</ul>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://afrunk.github.io">Afrunk</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://afrunk.github.io/2019/07/24/BIT-Python机器学习应用/">http://afrunk.github.io/2019/07/24/BIT-Python机器学习应用/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Machine-Learning/">Machine Learning</a>
+            <a href="/tags/Clusering/">Clusering</a>
+            <a href="/tags/Dimension-Reduction/">Dimension Reduction</a>
+            <a href="/tags/Classification/">Classification</a>
+            <a href="/tags/Regression/">Regression</a>
+            <a href="/tags/Reinforecement/">Reinforecement</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/2019/07/23/The-Bag-of-Words/">
+        <span class="next-text nav-default">Sklearn-Text character extraction： BoW & TF-IDF</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2019<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Afrunk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
