@@ -121,7 +121,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-1-环境配置"><span class="toc-text">Part 1: 环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-2-如何-Push-和-Clone"><span class="toc-text">Part 2: 如何 Push 和 Clone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-3-如何新建-Branch"><span class="toc-text">Part 3: 如何新建 Branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-如何选择不同的-Branch-作为开发版本"><span class="toc-text">4.如何选择不同的 Branch 作为开发版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-如何将新更新的项目文件同步到新的-Branch-中"><span class="toc-text">5. 如何将新更新的项目文件同步到新的 Branch 中</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-1-环境配置"><span class="toc-text">Part 1: 环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-2-如何-Push-和-Clone"><span class="toc-text">Part 2: 如何 Push 和 Clone</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Part-3-如何新建-和-删除-Branch"><span class="toc-text">Part 3: 如何新建 和 删除 Branch</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-如何选择不同的-Branch-作为开发版本"><span class="toc-text">4.如何选择不同的 Branch 作为开发版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-如何将新更新的项目文件同步到新的-Branch-中"><span class="toc-text">5. 如何将新更新的项目文件同步到新的 Branch 中</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>由于 Hexo Github 的原因，我早就在本地安装了 Git。所以接下来只是讲解如何使用 Pycharm 中的 Git 进行本地代码的同步和步骤的迭代记录过程，如何使用好Git 这个工具其实也是一门必修课。</p>
 <a id="more"></a>
@@ -139,11 +139,11 @@
 <p><img src="4.jpg" alt="New Repository"></p>
 <h2 id="Part-2-如何-Push-和-Clone"><a href="#Part-2-如何-Push-和-Clone" class="headerlink" title="Part 2: 如何 Push 和 Clone"></a>Part 2: 如何 Push 和 Clone</h2><p>我们只要有更改的地方，上方的文件名便会进行修改为蓝色字体。我们选择 VSC-Git- Commite Files ，然后再选择 Push 即可进行上传，我们就可以在 Github 上看到更新的记录。</p>
 <p>如果我们想要下载什么项目的话也可以直接在 Pychamr 中进行操作，选择 Git-Clone 将我们下载的链接复制粘贴进去，然后选择一个合适的文件夹位置即可。</p>
-<h2 id="Part-3-如何新建-Branch"><a href="#Part-3-如何新建-Branch" class="headerlink" title="Part 3: 如何新建 Branch"></a>Part 3: 如何新建 Branch</h2><p>查看上图，选择 VCS 下的 Git，可能Git不存在，那么你直接选择 VCS 下的第二项，然后会有一个弹窗下有下拉框，选择 Git 之后 Git 栏就会出现。下面是 Git 栏的属性：</p>
+<h2 id="Part-3-如何新建-和-删除-Branch"><a href="#Part-3-如何新建-和-删除-Branch" class="headerlink" title="Part 3: 如何新建 和 删除 Branch"></a>Part 3: 如何新建 和 删除 Branch</h2><p>查看上图，选择 VCS 下的 Git，可能Git不存在，那么你直接选择 VCS 下的第二项，然后会有一个弹窗下有下拉框，选择 Git 之后 Git 栏就会出现。下面是 Git 栏的属性：</p>
 <p><img src="5.png" alt="Git配置"></p>
 <p>我们选择 Branches 即可查看当前该库的所有分支：</p>
 <p><img src="6.png" alt="Git配置"></p>
-<p>我们选择 New Branch 即可新建一个分支。</p>
+<p>我们选择 New Branch 即可新建一个分支。我们还可以在原有的分支上点击最右侧的按钮进行检查更新和删除分支操作。</p>
 <h2 id="4-如何选择不同的-Branch-作为开发版本"><a href="#4-如何选择不同的-Branch-作为开发版本" class="headerlink" title="4.如何选择不同的 Branch 作为开发版本"></a>4.如何选择不同的 Branch 作为开发版本</h2><p>选择左侧的文件夹，右击会出现 Git 选项-Repository-Rebase</p>
 <p><img src="7.png" alt="Git配置"></p>
 <p>在后续的下拉菜单中可以进行选择，Rebase 之后我们的文件夹内的代码便会进行变化。然后我们即可进行开发了， 有更新和同步都只需要使用 Commit 和 Push 即可实现。</p>
