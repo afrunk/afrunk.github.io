@@ -121,7 +121,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、机器学习"><span class="toc-text">一、机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-资料学习进度"><span class="toc-text">1.1 资料学习进度</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、机器学习"><span class="toc-text">一、机器学习</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-资料学习进度"><span class="toc-text">1.1 资料学习进度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-工具"><span class="toc-text">二 工具</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-office-激活"><span class="toc-text">2.1 office 激活</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-数据库"><span class="toc-text">三 数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-Mysql"><span class="toc-text">3.1 Mysql</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#如何设置表的自增"><span class="toc-text">如何设置表的自增</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串插入到数据库中需要转换"><span class="toc-text">字符串插入到数据库中需要转换</span></a></li></ol></li></ol></li></ol>
     </div>
   </div><div class="post-content"><a id="more"></a>
 
@@ -171,6 +171,12 @@
 <td>无</td>
 </tr>
 </tbody></table>
+<h3 id="二-工具"><a href="#二-工具" class="headerlink" title="二 工具"></a>二 工具</h3><h4 id="2-1-office-激活"><a href="#2-1-office-激活" class="headerlink" title="2.1 office 激活"></a>2.1 office 激活</h4><p>下载<a href="https://pan.baidu.com/s/16liZmtdgJhhrX7uqe3ZA_Q" target="_blank" rel="noopener">百度云盘</a>(提取码：0155)中的 office 套件之后安装，然后按照<a href="https://blog.csdn.net/HouszChina/article/details/85244176" target="_blank" rel="noopener">破解office2019（bat文件）</a>的方法新建一个 bat 文件，将如下代码填入其中</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@echo off</span></span><br><span class="line">(cd /d <span class="string">"%~dp0"</span>)&amp;&amp;(NET FILE||(powershell start-process -FilePath <span class="string">'%0'</span> -verb runas)&amp;&amp;(exit /B)) &gt;NUL <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">title Office <span class="number">2019</span> Activator r/Piracy</span><br><span class="line">echo Converting... &amp; mode <span class="number">40</span>,<span class="number">25</span></span><br><span class="line">(<span class="keyword">if</span> exist <span class="string">"%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"</span> cd /d <span class="string">"%ProgramFiles%\Microsoft Office\Office16"</span>)&amp;(<span class="keyword">if</span> exist <span class="string">"%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"</span> cd /d <span class="string">"%ProgramFiles(x86)%\Microsoft Office\Office16"</span>)&amp;(<span class="keyword">for</span> /f %%x <span class="keyword">in</span> (<span class="string">'dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms'</span>) do cscript ospp.vbs /inslic:<span class="string">"..\root\Licenses16\%%x"</span> &gt;nul)&amp;(<span class="keyword">for</span> /f %%x <span class="keyword">in</span> (<span class="string">'dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms'</span>) do cscript ospp.vbs /inslic:<span class="string">"..\root\Licenses16\%%x"</span> &gt;nul)</span><br><span class="line">cscript //nologo ospp.vbs /unpkey:<span class="number">6</span>MWKP &gt;nul&amp;cscript //nologo ospp.vbs /inpkey:NMMKJ<span class="number">-6</span>RK4F-KMJVX<span class="number">-8</span>D9MJ<span class="number">-6</span>MWKP &gt;nul&amp;set i=<span class="number">1</span></span><br><span class="line">:server</span><br><span class="line"><span class="keyword">if</span> %i%==<span class="number">1</span> set KMS_Sev=kms7.MSGuides.com</span><br><span class="line"><span class="keyword">if</span> %i%==<span class="number">2</span> set KMS_Sev=kms8.MSGuides.com</span><br><span class="line"><span class="keyword">if</span> %i%==<span class="number">3</span> set KMS_Sev=kms9.MSGuides.com</span><br><span class="line">cscript //nologo ospp.vbs /sethst:%KMS_Sev% &gt;nul</span><br><span class="line">echo %KMS_Sev% &amp; echo Activating...</span><br><span class="line">cscript //nologo ospp.vbs /act | find /i <span class="string">"successful"</span> &amp;&amp; (echo Complete) || (echo Trying another KMS Server &amp; set /a i+=<span class="number">1</span> &amp; goto server)</span><br><span class="line">pause &gt;nul</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+
+<p>重新打开 office，点击右上角的激活情况，以及激活。</p>
+<h3 id="三-数据库"><a href="#三-数据库" class="headerlink" title="三 数据库"></a>三 数据库</h3><h4 id="3-1-Mysql"><a href="#3-1-Mysql" class="headerlink" title="3.1 Mysql"></a>3.1 Mysql</h4><h5 id="如何设置表的自增"><a href="#如何设置表的自增" class="headerlink" title="如何设置表的自增"></a>如何设置表的自增</h5><p>在Mysql中设置表的自增需要该属性为该表唯一的主键。</p>
+<h5 id="字符串插入到数据库中需要转换"><a href="#字符串插入到数据库中需要转换" class="headerlink" title="字符串插入到数据库中需要转换"></a>字符串插入到数据库中需要转换</h5><p>报错：pymysql.err.ProgrammingError: (1064, “You have an error in your SQL syntax;<br><br>解决方法：<a href="https://blog.csdn.net/qq_36622490/article/details/87455903" target="_blank" rel="noopener">https://blog.csdn.net/qq_36622490/article/details/87455903</a></p>
 
       </div>
       <div class="post-copyright">
@@ -191,7 +197,12 @@
             <a href="/tags/WIKI/">WIKI</a>
             </div>
         
-        <nav class="post-nav"><a class="next" href="/2019/07/31/CCSP-First-question/">
+        <nav class="post-nav"><a class="prev" href="/2019/08/27/common-sorting-algorithm/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">CSP 17 - Preparation before the game</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2019/07/31/CCSP-First-question/">
         <span class="next-text nav-default">CCSP-First question</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
