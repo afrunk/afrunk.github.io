@@ -121,22 +121,24 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CSP-17"><span class="toc-text">CSP 17</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Informaton-Summary"><span class="toc-text">Informaton Summary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Topic-introduction"><span class="toc-text">Topic introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Online-Judge"><span class="toc-text">Online Judge</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-text">Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#排序-未完成"><span class="toc-text">排序-未完成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-如何使用STL-sort-快排"><span class="toc-text">1-如何使用STL sort 快排</span></a></li></ol></li></ol></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Informaton-Summary"><span class="toc-text">一 Informaton Summary</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Topic-introduction"><span class="toc-text">1.1 Topic introduction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Online-Judge"><span class="toc-text">1.2 Online Judge</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-Algorithm"><span class="toc-text">二 Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-排序-未完成"><span class="toc-text">2.1 排序-未完成</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-如何使用STL-sort-快排"><span class="toc-text">1-如何使用STL sort 快排</span></a></li></ol></li></ol></li></ol>
     </div>
-  </div><div class="post-content"><h1 id="CSP-17"><a href="#CSP-17" class="headerlink" title="CSP 17"></a>CSP 17</h1><h2 id="Informaton-Summary"><a href="#Informaton-Summary" class="headerlink" title="Informaton Summary"></a>Informaton Summary</h2><h3 id="Topic-introduction"><a href="#Topic-introduction" class="headerlink" title="Topic introduction"></a>Topic introduction</h3><ul>
+  </div><div class="post-content"><a id="more"></a>
+
+<h2 id="一-Informaton-Summary"><a href="#一-Informaton-Summary" class="headerlink" title="一 Informaton Summary"></a>一 Informaton Summary</h2><h3 id="1-1-Topic-introduction"><a href="#1-1-Topic-introduction" class="headerlink" title="1.1 Topic introduction"></a>1.1 Topic introduction</h3><ul>
 <li>第一题：水题</li>
-<li>第二题：接近n^2 复杂度的水题</li>
+<li>第二题：接近 n^2 复杂度的水题</li>
 <li>第三题：字符串处理，复杂文本的处理</li>
 <li>第四题：一般用到高等数据结构，比如树、图，而且需要用到的算法要求较高</li>
 <li>第五题：纯粹的算法题，ACM级</li>
 </ul>
-<h3 id="Online-Judge"><a href="#Online-Judge" class="headerlink" title="Online Judge"></a>Online Judge</h3><ul>
+<h3 id="1-2-Online-Judge"><a href="#1-2-Online-Judge" class="headerlink" title="1.2 Online Judge"></a>1.2 Online Judge</h3><ul>
 <li>ACM 题库</li>
 <li>CCF-CSP<a href="https://blog.csdn.net/tigerisland45/article/details/54755895" target="_blank" rel="noopener">真题</a></li>
 <li>结合《算法笔记》刷PAT甲级乙级<a href="https://pintia.cn/problem-sets?tab=0" target="_blank" rel="noopener">题库</a></li>
 </ul>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="排序-未完成"><a href="#排序-未完成" class="headerlink" title="排序-未完成"></a>排序-未完成</h3><p>分类<br>1.最快最简单的桶排序<br>2.冒泡排序<br>3.STL 快排</p>
-<a id="more"></a>
+<h2 id="二-Algorithm"><a href="#二-Algorithm" class="headerlink" title="二 Algorithm"></a>二 Algorithm</h2><h3 id="2-1-排序-未完成"><a href="#2-1-排序-未完成" class="headerlink" title="2.1 排序-未完成"></a>2.1 排序-未完成</h3><p>分类<br>1.最快最简单的桶排序<br>2.冒泡排序<br>3.STL 快排</p>
+<!-- more -->
 <h4 id="1-如何使用STL-sort-快排"><a href="#1-如何使用STL-sort-快排" class="headerlink" title="1-如何使用STL sort 快排"></a>1-如何使用STL sort 快排</h4><p>为什么要使用STL的快速排序，因为有的时候冒泡、选择等算法的复杂度为 O(N^2)会超时，而快速排序的复杂度为 O (N log N)。<br>sort在 <algorithm>库里面，原型如下：</algorithm></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span>(<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span>);</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>,<span class="title">class</span> <span class="title">Compare</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span> (<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span> ,<span class="title">Compare</span> <span class="title">comp</span>);</span></span><br></pre></td></tr></table></figure>
 
