@@ -118,33 +118,10 @@
         </span></div>
     </header>
 
-    <div class="post-content"><a id="more"></a>
-
-<h2 id="一-Informaton-Summary"><a href="#一-Informaton-Summary" class="headerlink" title="一 Informaton Summary"></a>一 Informaton Summary</h2><h3 id="1-1-Topic-introduction"><a href="#1-1-Topic-introduction" class="headerlink" title="1.1 Topic introduction"></a>1.1 Topic introduction</h3><ul>
-<li>第一题：水题</li>
-<li>第二题：接近 n^2 复杂度的水题</li>
-<li>第三题：字符串处理，复杂文本的处理</li>
-<li>第四题：一般用到高等数据结构，比如树、图，而且需要用到的算法要求较高</li>
-<li>第五题：纯粹的算法题，ACM级</li>
-</ul>
-<h3 id="1-2-Online-Judge"><a href="#1-2-Online-Judge" class="headerlink" title="1.2 Online Judge"></a>1.2 Online Judge</h3><ul>
-<li>ACM 题库</li>
-<li>CCF-CSP<a href="https://blog.csdn.net/tigerisland45/article/details/54755895" target="_blank" rel="noopener">真题</a></li>
-<li>结合《算法笔记》刷PAT甲级乙级<a href="https://pintia.cn/problem-sets?tab=0" target="_blank" rel="noopener">题库</a></li>
-</ul>
-<h2 id="二-Algorithm"><a href="#二-Algorithm" class="headerlink" title="二 Algorithm"></a>二 Algorithm</h2><h3 id="2-1-排序-未完成"><a href="#2-1-排序-未完成" class="headerlink" title="2.1 排序-未完成"></a>2.1 排序-未完成</h3><p>分类<br>1.最快最简单的桶排序<br>2.冒泡排序<br>3.STL 快排</p>
-<!-- more -->
-<h4 id="1-如何使用STL-sort-快排"><a href="#1-如何使用STL-sort-快排" class="headerlink" title="1-如何使用STL sort 快排"></a>1-如何使用STL sort 快排</h4><p>为什么要使用STL的快速排序，因为有的时候冒泡、选择等算法的复杂度为 O(N^2)会超时，而快速排序的复杂度为 O (N log N)。<br>sort在 <algorithm>库里面，原型如下：</algorithm></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span>(<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span>);</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="class"><span class="keyword">class</span> <span class="title">RandomAccessIterator</span>,<span class="title">class</span> <span class="title">Compare</span>&gt;</span></span><br><span class="line"><span class="class"><span class="title">void</span> <span class="title">sort</span> (<span class="title">RandomAccessIterator</span> <span class="title">first</span>,<span class="title">RandomAccessIterator</span> <span class="title">last</span> ,<span class="title">Compare</span> <span class="title">comp</span>);</span></span><br></pre></td></tr></table></figure>
-
-<p>sort排序有两种形式，一个有三个参数，一个有两个参数。Sort的前两个参数是起始地址和中止地址。<br><br>如 <code>sort(a,a+n)</code>表示对a[0] , a[1] , a[2] … a[n-1] 排序 ，默认的是升序的。<br></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] =&#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line">    sort(<span class="built_in">array</span>,<span class="built_in">array</span>+<span class="number">5</span>);</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span>  i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    # 延迟关闭cmd</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果我们要实现降序的话就要用到第三个参数，第三个参数是一个比较函数</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面就是降序排序的比较函数，意思：是 a&gt;b 时为 true，就不交换，a&lt;b时为 false，交换。然后在 sort（a,a+5,cmp）即可进行排序。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a&gt;b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> <span class="built_in">array</span>[<span class="number">5</span>] =&#123;<span class="number">5</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">8</span>&#125;;</span><br><span class="line">    sort(<span class="built_in">array</span>,<span class="built_in">array</span>+<span class="number">5</span>,cmp);</span><br><span class="line">    <span class="keyword">for</span>( <span class="keyword">int</span>  i =<span class="number">0</span>;i&lt;<span class="number">5</span>;i++)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d"</span>,<span class="built_in">array</span>[i]);</span><br><span class="line">    system(<span class="string">"pause"</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    <div class="post-content"><p>Algorithmic contest notes and some tips.</p>
+          <div class="read-more">
+            <a href="/2019/08/27/common-sorting-algorithm/" class="read-more-link">阅读更多</a>
+          </div>
         </div></article>
       <article class="post">
     <header class="post-header">
@@ -157,61 +134,10 @@
         </span></div>
     </header>
 
-    <div class="post-content"><a id="more"></a>
-
-<h3 id="一、机器学习"><a href="#一、机器学习" class="headerlink" title="一、机器学习"></a>一、机器学习</h3><h4 id="1-1-资料学习进度"><a href="#1-1-资料学习进度" class="headerlink" title="1.1 资料学习进度"></a>1.1 资料学习进度</h4><table>
-<thead>
-<tr>
-<th>类别</th>
-<th>具体内容</th>
-<th>完成度</th>
-<th>完成时间</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>机器学习-书籍</td>
-<td>《机器学习》-周志华 西瓜书</td>
-<td>未完成</td>
-<td>无</td>
-</tr>
-<tr>
-<td>机器学习-书籍</td>
-<td>《PRML》-Bishop</td>
-<td>未完成</td>
-<td>无</td>
-</tr>
-<tr>
-<td>机器学习-视频</td>
-<td>BIT 机器学习应用</td>
-<td><a href="http://afrunk.github.io/2019/07/24/BIT-Python%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E5%BA%94%E7%94%A8/">未完成</a></td>
-<td>2019-7-24至</td>
-</tr>
-<tr>
-<td>机器学习-视频</td>
-<td>《Machine Learning》-吴恩达</td>
-<td>未完成</td>
-<td>无</td>
-</tr>
-<tr>
-<td>深度学习-视频</td>
-<td>《CS231n》-Fei-Fei li</td>
-<td>未完成</td>
-<td>无</td>
-</tr>
-<tr>
-<td>强化学习-视频</td>
-<td>《Reinforcement Learning》-David Silver</td>
-<td>未完成</td>
-<td>无</td>
-</tr>
-</tbody></table>
-<h3 id="二-工具"><a href="#二-工具" class="headerlink" title="二 工具"></a>二 工具</h3><h4 id="2-1-office-激活"><a href="#2-1-office-激活" class="headerlink" title="2.1 office 激活"></a>2.1 office 激活</h4><p>下载<a href="https://pan.baidu.com/s/16liZmtdgJhhrX7uqe3ZA_Q" target="_blank" rel="noopener">百度云盘</a>(提取码：0155)中的 office 套件之后安装，然后按照<a href="https://blog.csdn.net/HouszChina/article/details/85244176" target="_blank" rel="noopener">破解office2019（bat文件）</a>的方法新建一个 bat 文件，将如下代码填入其中</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@echo off</span></span><br><span class="line">(cd /d <span class="string">"%~dp0"</span>)&amp;&amp;(NET FILE||(powershell start-process -FilePath <span class="string">'%0'</span> -verb runas)&amp;&amp;(exit /B)) &gt;NUL <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br><span class="line">title Office <span class="number">2019</span> Activator r/Piracy</span><br><span class="line">echo Converting... &amp; mode <span class="number">40</span>,<span class="number">25</span></span><br><span class="line">(<span class="keyword">if</span> exist <span class="string">"%ProgramFiles%\Microsoft Office\Office16\ospp.vbs"</span> cd /d <span class="string">"%ProgramFiles%\Microsoft Office\Office16"</span>)&amp;(<span class="keyword">if</span> exist <span class="string">"%ProgramFiles(x86)%\Microsoft Office\Office16\ospp.vbs"</span> cd /d <span class="string">"%ProgramFiles(x86)%\Microsoft Office\Office16"</span>)&amp;(<span class="keyword">for</span> /f %%x <span class="keyword">in</span> (<span class="string">'dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms'</span>) do cscript ospp.vbs /inslic:<span class="string">"..\root\Licenses16\%%x"</span> &gt;nul)&amp;(<span class="keyword">for</span> /f %%x <span class="keyword">in</span> (<span class="string">'dir /b ..\root\Licenses16\ProPlus2019VL*.xrm-ms'</span>) do cscript ospp.vbs /inslic:<span class="string">"..\root\Licenses16\%%x"</span> &gt;nul)</span><br><span class="line">cscript //nologo ospp.vbs /unpkey:<span class="number">6</span>MWKP &gt;nul&amp;cscript //nologo ospp.vbs /inpkey:NMMKJ<span class="number">-6</span>RK4F-KMJVX<span class="number">-8</span>D9MJ<span class="number">-6</span>MWKP &gt;nul&amp;set i=<span class="number">1</span></span><br><span class="line">:server</span><br><span class="line"><span class="keyword">if</span> %i%==<span class="number">1</span> set KMS_Sev=kms7.MSGuides.com</span><br><span class="line"><span class="keyword">if</span> %i%==<span class="number">2</span> set KMS_Sev=kms8.MSGuides.com</span><br><span class="line"><span class="keyword">if</span> %i%==<span class="number">3</span> set KMS_Sev=kms9.MSGuides.com</span><br><span class="line">cscript //nologo ospp.vbs /sethst:%KMS_Sev% &gt;nul</span><br><span class="line">echo %KMS_Sev% &amp; echo Activating...</span><br><span class="line">cscript //nologo ospp.vbs /act | find /i <span class="string">"successful"</span> &amp;&amp; (echo Complete) || (echo Trying another KMS Server &amp; set /a i+=<span class="number">1</span> &amp; goto server)</span><br><span class="line">pause &gt;nul</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
-
-<p>重新打开 office，点击右上角的激活情况，以及激活。</p>
-<h3 id="三-数据库"><a href="#三-数据库" class="headerlink" title="三 数据库"></a>三 数据库</h3><h4 id="3-1-Mysql"><a href="#3-1-Mysql" class="headerlink" title="3.1 Mysql"></a>3.1 Mysql</h4><h5 id="如何设置表的自增"><a href="#如何设置表的自增" class="headerlink" title="如何设置表的自增"></a>如何设置表的自增</h5><p>在Mysql中设置表的自增需要该属性为该表唯一的主键。</p>
-<h5 id="字符串插入到数据库中需要转换"><a href="#字符串插入到数据库中需要转换" class="headerlink" title="字符串插入到数据库中需要转换"></a>字符串插入到数据库中需要转换</h5><p>报错：pymysql.err.ProgrammingError: (1064, “You have an error in your SQL syntax;<br><br>解决方法：<a href="https://blog.csdn.net/qq_36622490/article/details/87455903" target="_blank" rel="noopener">https://blog.csdn.net/qq_36622490/article/details/87455903</a></p>
-
+    <div class="post-content"><p>Daily small problem record.</p>
+          <div class="read-more">
+            <a href="/2019/08/06/WIKI/" class="read-more-link">阅读更多</a>
+          </div>
         </div></article>
       <article class="post">
     <header class="post-header">
