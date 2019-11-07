@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Data mining-Aporiori"><link rel="alternate" href="/default" title="天道宫"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.io/2019/11/05/Data-mining-Aporiori/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
+</script>
+
+    <title>Data mining-Aporiori - 天道宫</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">天道宫</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">天道宫</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Data mining-Aporiori
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-11-05
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、引文"><span class="toc-text">一、引文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-支持度"><span class="toc-text">1.1 支持度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-可信度（置信度）"><span class="toc-text">1.2 可信度（置信度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-原理"><span class="toc-text">1.3 原理</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><p>无监督学习算法 Aporiori 数据挖掘</p>
+<a id="more"></a>
+
+<h1 id="一、引文"><a href="#一、引文" class="headerlink" title="一、引文"></a>一、引文</h1><p>主要参考文献：</p>
+<ul>
+<li>《机器学习实战》：第十章 无监督学习</li>
+<li><a href="https://blog.csdn.net/qq_36523839/article/details/82191677" target="_blank" rel="noopener">数据挖掘十大算法（四）：Apriori 关联分析算法</a></li>
+</ul>
+<p>在无监督学习中，类似分类和回归中的目标变量事先并不存在。与前面“对于输入数据X能预测变量Y”不同的是，这里要回答的问题是：“从数据X中能发现什么？”在一堆数据集中寻找数据之间的某种关联，这里主要介绍的是叫做Apriori的一个‘先验算法’，通过改算法我们可以对数据集做关联分析——在大规模的数据中寻找有趣关系的任务，本文主要介绍使用 Apriori算法发现数据集的频繁项集、关联规则。</p>
+<p>这些关系可以有两种形式：<strong>频繁项集、关联规则</strong></p>
+<ul>
+<li>频繁项集：经常出现在一块的物品的集合</li>
+<li>关联规则：暗示两种物品之间可能存在很强的关系</li>
+</ul>
+<p><img src="1.png" alt="具体例子"><br>频繁项集是指那些经常出现在一起的物品，例如上图的（葡萄酒、尿布、豆奶），从上面的数据集中也可以找到尿布-&gt;葡萄酒的关联规则，这意味着有人买了尿布，那很可能也会购买葡萄酒，那如何定义和表示频繁项集和关联规则呢？这里引入支持度和可信度（置信度）。</p>
+<h2 id="1-1-支持度"><a href="#1-1-支持度" class="headerlink" title="1.1 支持度"></a>1.1 支持度</h2><p>一个项集得支持度被定义为数据集中包含该项集得记录所占的比例，上图中，豆奶的支持度为4/5，（豆奶、尿布）为3/5，支持度是针对项集来说的，因此可以定义一个最小支持度，只保留最小支持度的项集。</p>
+<h2 id="1-2-可信度（置信度）"><a href="#1-2-可信度（置信度）" class="headerlink" title="1.2 可信度（置信度）"></a>1.2 可信度（置信度）</h2><p>针对如{尿布}-&gt;{葡萄酒}这样的关联规则来定义的。计算为 支持度{尿布，葡萄酒}/支持度{尿布}，其中{尿布，葡萄酒}的支持度为3/5，{尿布}的支持度为4/5，所以“尿布-&gt;葡萄酒”的可行度为3/4=0.75，这意味着尿布的记录中，我们的规则有75%都适用。</p>
+<p>有了可以量化的计算方式，我们却还不能立刻运算，这是因为如果我们直接运算所有的数据，运算量极其的大，很难实现，这里说明一下，假设我们只有4种商品：商品0，商品1，商品2，商品3，那么如何得到可能被一起购买的商品的组合？</p>
+<p><img src="2.png" alt="计算方法"><br>上图显示了物品之间所有可能的组合，从上往下一个集合是 Ø，表示不包含任何物品的空集，物品集合之间的连线表明两个或者更多集合可以组合形成一个更大的集合。我们的目标是找到经常在一起购买的物品集合。这里使用集合的支持度来度量其出现的频率。一个集合出现的支持度是指有多少比例的交易记录包含该集合。例如，对于上图，要计算 0,3 的支持度，直接的想法是遍历每条记录，统计包含有 0 和 3 的记录的数量，使用该数量除以总记录数，就可以得到支持度。而这只是针对单个集合 0,3. 要获得每种可能集合的支持度就需要多次重复上述过程。对于上图，虽然仅有4中物品，也需要遍历数据15次。随着物品数目的增加，遍历次数会急剧增加，对于包含 N 种物品的数据集共有 2^N−1 种项集组合。为了降低计算时间，研究人员发现了 Apriori 原理，可以帮我们减少感兴趣的频繁项集的数目。</p>
+<h2 id="1-3-原理"><a href="#1-3-原理" class="headerlink" title="1.3 原理"></a>1.3 原理</h2><p><strong>如果某个项集是频繁项集，那么它所有的子集也是频繁的，即如果{0，1}是频繁，那么{0}，{1}也一定是频繁的。这个原理直观上没有什么用，但是反过来看就很有用了，也就是说如果一个项集是非平频繁的，那么它的所有超集也是非频繁的。</strong><br><img src="3.png" alt="计算方法"></p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://afrunk.github.io">Afrunk</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://afrunk.github.io/2019/11/05/Data-mining-Aporiori/">http://afrunk.github.io/2019/11/05/Data-mining-Aporiori/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        
+        <nav class="post-nav"><a class="prev" href="/2019/11/07/Mathematical-basis/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Mathematical basis</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2019/10/18/贝叶斯建模/">
+        <span class="next-text nav-default">贝叶斯建模</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2019<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Afrunk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
