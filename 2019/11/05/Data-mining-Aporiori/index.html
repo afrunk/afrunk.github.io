@@ -121,7 +121,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、引文"><span class="toc-text">一、引文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-支持度"><span class="toc-text">1.1 支持度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-可信度（置信度）"><span class="toc-text">1.2 可信度（置信度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-原理"><span class="toc-text">1.3 原理</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、引文"><span class="toc-text">一、引文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-支持度"><span class="toc-text">1.1 支持度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-可信度（置信度）"><span class="toc-text">1.2 可信度（置信度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-原理"><span class="toc-text">1.3 原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、频繁项集"><span class="toc-text">二、频繁项集</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>无监督学习算法 Aporiori 数据挖掘</p>
 <a id="more"></a>
@@ -143,6 +143,13 @@
 <p>有了可以量化的计算方式，我们却还不能立刻运算，这是因为如果我们直接运算所有的数据，运算量极其的大，很难实现，这里说明一下，假设我们只有4种商品：商品0，商品1，商品2，商品3，那么如何得到可能被一起购买的商品的组合？</p>
 <p><img src="2.png" alt="计算方法"><br>上图显示了物品之间所有可能的组合，从上往下一个集合是 Ø，表示不包含任何物品的空集，物品集合之间的连线表明两个或者更多集合可以组合形成一个更大的集合。我们的目标是找到经常在一起购买的物品集合。这里使用集合的支持度来度量其出现的频率。一个集合出现的支持度是指有多少比例的交易记录包含该集合。例如，对于上图，要计算 0,3 的支持度，直接的想法是遍历每条记录，统计包含有 0 和 3 的记录的数量，使用该数量除以总记录数，就可以得到支持度。而这只是针对单个集合 0,3. 要获得每种可能集合的支持度就需要多次重复上述过程。对于上图，虽然仅有4中物品，也需要遍历数据15次。随着物品数目的增加，遍历次数会急剧增加，对于包含 N 种物品的数据集共有 2^N−1 种项集组合。为了降低计算时间，研究人员发现了 Apriori 原理，可以帮我们减少感兴趣的频繁项集的数目。</p>
 <h2 id="1-3-原理"><a href="#1-3-原理" class="headerlink" title="1.3 原理"></a>1.3 原理</h2><p><strong>如果某个项集是频繁项集，那么它所有的子集也是频繁的，即如果{0，1}是频繁，那么{0}，{1}也一定是频繁的。这个原理直观上没有什么用，但是反过来看就很有用了，也就是说如果一个项集是非平频繁的，那么它的所有超集也是非频繁的。</strong><br><img src="3.png" alt="计算方法"></p>
+<h1 id="二、频繁项集"><a href="#二、频繁项集" class="headerlink" title="二、频繁项集"></a>二、频繁项集</h1><p>主要步骤：</p>
+<ul>
+<li>生成所有单个物品的项集列表</li>
+<li>扫描交易记录来查看哪些项集满足最小支持度要求，那些不满足最小支持度的集合会被去掉</li>
+<li>对剩下的集合进行组合以生成包含两个元素的项集</li>
+<li>接下来重新扫描交易记录，去掉不满足最小支持度的项集，重复进行直到所有项集都被去掉</li>
+</ul>
 
       </div>
       <div class="post-copyright">
