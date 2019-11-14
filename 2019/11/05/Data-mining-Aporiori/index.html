@@ -121,7 +121,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、引文"><span class="toc-text">一、引文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-支持度"><span class="toc-text">1.1 支持度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-可信度（置信度）"><span class="toc-text">1.2 可信度（置信度）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-原理"><span class="toc-text">1.3 原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、频繁项集"><span class="toc-text">二、频繁项集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、关联规则"><span class="toc-text">三、关联规则</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、引文"><span class="toc-text">一、引文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-0-事务数据集及一些基本概念"><span class="toc-text">1.0 事务数据集及一些基本概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-支持度-support"><span class="toc-text">1.1 支持度 support</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-可信度（置信度）-confidence"><span class="toc-text">1.2 可信度（置信度） confidence</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-提升度"><span class="toc-text">1.3 提升度</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-强关联规则"><span class="toc-text">1.4 强关联规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-原理"><span class="toc-text">1.5 原理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、频繁项集"><span class="toc-text">二、频繁项集</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、关联规则"><span class="toc-text">三、关联规则</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、算法流程"><span class="toc-text">四、算法流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、优缺点"><span class="toc-text">五、优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-优点"><span class="toc-text">5.1 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-缺点"><span class="toc-text">5.2 缺点</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、算法推导实现流程"><span class="toc-text">六、算法推导实现流程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#七、Director-Collaborator-Analysis"><span class="toc-text">七、Director Collaborator Analysis</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>无监督学习算法 Apriori 数据挖掘</p>
 <a id="more"></a>
@@ -129,19 +129,36 @@
 <h1 id="一、引文"><a href="#一、引文" class="headerlink" title="一、引文"></a>一、引文</h1><p>主要参考文献：</p>
 <ul>
 <li>《机器学习实战》：第十章 无监督学习</li>
+<li><a href="https://blog.csdn.net/weixin_43378396/article/details/89576648" target="_blank" rel="noopener">Apriori</a></li>
+<li>《》</li>
 </ul>
-<p>在无监督学习中，类似分类和回归中的目标变量事先并不存在。与前面“对于输入数据X能预测变量Y”不同的是，这里要回答的问题是：“从数据X中能发现什么？”在一堆数据集中寻找数据之间的某种关联，这里主要介绍的是叫做Apriori的一个‘先验算法’，通过改算法我们可以对数据集做关联分析——在大规模的数据中寻找有趣关系的任务，本文主要介绍使用 Apriori算法发现数据集的频繁项集、关联规则。</p>
+<p>在无监督学习中，类似分类和回归中的目标变量事先并不存在。与前面“对于输入数据X能预测变量Y”不同的是，这里要回答的问题是：“从数据X中能发现什么？”在一堆数据集中寻找数据之间的某种关联，这里主要介绍的是叫做Apriori的一个‘先验算法’，通过改算法我们可以对数据集做关联分析——在大规模的数据中寻找有趣关系的任务，本文主要介绍使用 Apriori算法发现数据集的频繁项集、关联规则,以及对于Apriori算法的一些调参方法。</p>
 <p>这些关系可以有两种形式：<strong>频繁项集、关联规则</strong></p>
 <ul>
 <li>频繁项集：经常出现在一块的物品的集合</li>
 <li>关联规则：暗示两种物品之间可能存在很强的关系</li>
 </ul>
 <p><img src="1.png" alt="具体例子"><br>频繁项集是指那些经常出现在一起的物品，例如上图的（葡萄酒、尿布、豆奶），从上面的数据集中也可以找到尿布-&gt;葡萄酒的关联规则，这意味着有人买了尿布，那很可能也会购买葡萄酒，那如何定义和表示频繁项集和关联规则呢？这里引入支持度和可信度（置信度）。</p>
-<h2 id="1-1-支持度"><a href="#1-1-支持度" class="headerlink" title="1.1 支持度"></a>1.1 支持度</h2><p>一个项集得支持度被定义为数据集中包含该项集得记录所占的比例，上图中，豆奶的支持度为4/5，（豆奶、尿布）为3/5，支持度是针对项集来说的，因此可以定义一个最小支持度，只保留最小支持度的项集。</p>
-<h2 id="1-2-可信度（置信度）"><a href="#1-2-可信度（置信度）" class="headerlink" title="1.2 可信度（置信度）"></a>1.2 可信度（置信度）</h2><p>针对如{尿布}-&gt;{葡萄酒}这样的关联规则来定义的。计算为 支持度{尿布，葡萄酒}/支持度{尿布}，其中{尿布，葡萄酒}的支持度为3/5，{尿布}的支持度为4/5，所以“尿布-&gt;葡萄酒”的可行度为3/4=0.75，这意味着尿布的记录中，我们的规则有75%都适用。</p>
+<h2 id="1-0-事务数据集及一些基本概念"><a href="#1-0-事务数据集及一些基本概念" class="headerlink" title="1.0 事务数据集及一些基本概念"></a>1.0 事务数据集及一些基本概念</h2><ul>
+<li>事务：每一条交易称为一个事务</li>
+<li>事务数据集：设 $I={i_1,i_2,…,i_m}$是一个全局项的集合,事务数据库$D={t_1,t_2,…,t_n}$是一个事务的集合,每个事务$t_i(1\leq i \leq n)$都对应 I 上的一个子集,例如 $t_1 = {i_1,i_3,i_7}$.</li>
+<li>项：交易的每一个物品称为一个项，例如豆奶、尿布等</li>
+<li>项集：包含零个或多个</li>
+</ul>
+<h2 id="1-1-支持度-support"><a href="#1-1-支持度-support" class="headerlink" title="1.1 支持度 support"></a>1.1 支持度 support</h2><p><strong>一个项集得支持度被定义为数据集中包含该项集得记录所占的比例</strong>，上图中，豆奶的支持度为4/5，（豆奶、尿布）为3/5，支持度是针对项集来说的，因此可以定义一个最小支持度，只保留最小支持度的项集。</p>
+<h2 id="1-2-可信度（置信度）-confidence"><a href="#1-2-可信度（置信度）-confidence" class="headerlink" title="1.2 可信度（置信度） confidence"></a>1.2 可信度（置信度） confidence</h2><p><strong>置信度表示Y 数据出现后,X数据出现的可能性,也可以说是数据的条件概率</strong>.<br>针对如{尿布}-&gt;{葡萄酒}这样的关联规则来定义的。计算为 支持度{尿布，葡萄酒}/支持度{尿布}，其中{尿布，葡萄酒}的支持度为3/5，{尿布}的支持度为4/5，所以“尿布-&gt;葡萄酒”的可行度为3/4=0.75，这意味着尿布的记录中，我们的规则有75%都适用。</p>
 <p>有了可以量化的计算方式，我们却还不能立刻运算，这是因为如果我们直接运算所有的数据，运算量极其的大，很难实现，这里说明一下，假设我们只有4种商品：商品0，商品1，商品2，商品3，那么如何得到可能被一起购买的商品的组合？</p>
 <p><img src="2.png" alt="计算方法"><br>上图显示了物品之间所有可能的组合，从上往下一个集合是 Ø，表示不包含任何物品的空集，物品集合之间的连线表明两个或者更多集合可以组合形成一个更大的集合。我们的目标是找到经常在一起购买的物品集合。这里使用集合的支持度来度量其出现的频率。一个集合出现的支持度是指有多少比例的交易记录包含该集合。例如，对于上图，要计算 0,3 的支持度，直接的想法是遍历每条记录，统计包含有 0 和 3 的记录的数量，使用该数量除以总记录数，就可以得到支持度。而这只是针对单个集合 0,3. 要获得每种可能集合的支持度就需要多次重复上述过程。对于上图，虽然仅有4中物品，也需要遍历数据15次。随着物品数目的增加，遍历次数会急剧增加，对于包含 N 种物品的数据集共有 2^N−1 种项集组合。为了降低计算时间，研究人员发现了 Apriori 原理，可以帮我们减少感兴趣的频繁项集的数目。</p>
-<h2 id="1-3-原理"><a href="#1-3-原理" class="headerlink" title="1.3 原理"></a>1.3 原理</h2><p><strong>如果某个项集是频繁项集，那么它所有的子集也是频繁的，即如果{0，1}是频繁，那么{0}，{1}也一定是频繁的。这个原理直观上没有什么用，但是反过来看就很有用了，也就是说如果一个项集是非平频繁的，那么它的所有超集也是非频繁的。</strong><br><img src="3.png" alt="计算方法"></p>
+<h2 id="1-3-提升度"><a href="#1-3-提升度" class="headerlink" title="1.3 提升度"></a>1.3 提升度</h2><p>提升度体现 X和 Y之间的关联关系,提升度大于1表示X和Y之间具有强关联关系,提升度小于等于1表示X和Y之间无有效的强关联关系.</p>
+<h2 id="1-4-强关联规则"><a href="#1-4-强关联规则" class="headerlink" title="1.4 强关联规则"></a>1.4 强关联规则</h2><p>满足最小支持度和最小置信度的关联规则</p>
+<h2 id="1-5-原理"><a href="#1-5-原理" class="headerlink" title="1.5 原理"></a>1.5 原理</h2><p>关联规则的挖掘目标是找出所有的频繁项集和根据频繁项集产生强关联规则.对于Apriori算法来说,其目标是找出所有的频繁项集,因此对于数据集合中的频繁数据集,我们需要自定义评估标准来找出频繁项集,常用的评估标准就是上述介绍的支持度.</p>
+<p>Apriori算法是经典生成关联规则的频繁项集挖掘算法,其目标是找到最多的<strong>K项频繁集</strong>,那么什么是最多的K项频繁集呢?例如当我们找到符合支持度的频繁集AB和ABE,我们会选择3项频繁集ABE.下面我们介绍Apriori算法选择频繁K项集过程.</p>
+<p><strong>如果某个项集是频繁项集，那么它所有的子集也是频繁的，即如果{0，1}是频繁，那么{0}，{1}也一定是频繁的。这个原理直观上没有什么用，但是反过来看就很有用了，也就是说如果一个项集是非平频繁的，那么它的所有超集也是非频繁的。</strong></p>
+<p><img src="3.png" alt="计算方法"></p>
+<p>Apriori算法采用迭代的方法，先搜索出候选1项集以及对应的支持度，剪枝去掉低于支持度的候选1项集，得到频繁1项集。然后对剩下的频繁1项集进行连接，得到候选2项集，筛选去掉低于支持度的候选2项集，得到频繁2项集。如此迭代下去，直到无法找到频繁k+1集为止，对应的频繁k项集的集合便是算法的输出结果。我们可以通过下面例子来看到具体迭代过程。</p>
+<p><img src="5.png" alt="计算方法"></p>
+<p>数据集包含4条记录{‘134’,‘235’,‘1235’,‘25’}，我们利用Apriori算法来寻找频繁k项集，最小支持度设置为50%。首先生成候选1项集，共包含五个数据{‘1’,‘2’,‘3’,‘4’,‘5’}，计算5个数据的支持度，然后对低于支持度的数据进行剪枝。其中数据{4}支持度为25%，低于最小支持度，进行剪枝处理，最终频繁1项集为{‘1’,‘2’,‘3’,‘5’}。根据频繁1项集连接得到候选2项集{‘12’,‘13’,‘15’,‘23’,‘25’,‘35’}，其中数据{‘12’,‘15’}低于最低支持度，进行剪枝处理，得到频繁2项集为{‘13’,‘23’,‘25’,‘35’}。如此迭代下去，最终能够得到频繁3项集{‘235’}，由于数据无法再进行连接，算法至此结束。</p>
+<p><img src="3.png" alt="计算方法"></p>
 <h1 id="二、频繁项集"><a href="#二、频繁项集" class="headerlink" title="二、频繁项集"></a>二、频繁项集</h1><p>主要步骤：</p>
 <ul>
 <li>生成所有单个物品的项集列表</li>
@@ -160,9 +177,24 @@
 <p>返回关联规则:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">=====关联规则=====</span><br><span class="line">frozenset(&#123;'I5'&#125;) --&gt; frozenset(&#123;'I4'&#125;) conf: 1.0</span><br><span class="line">frozenset(&#123;'I4'&#125;) --&gt; frozenset(&#123;'I5'&#125;) conf: 1.0</span><br><span class="line">[(frozenset(&#123;<span class="string">'I5'</span>&#125;), frozenset(&#123;<span class="string">'I4'</span>&#125;), <span class="number">1.0</span>), (frozenset(&#123;<span class="string">'I4'</span>&#125;), frozenset(&#123;<span class="string">'I5'</span>&#125;), <span class="number">1.0</span>)]</span><br></pre></td></tr></table></figure>
 
-<p>以上便是引用作者对这三个函数的详细描述，在函数中的具体代码，我也有相关的注释，慢慢来应该能够理解的。<br><img src="4.png" alt="计算方法"></p>
+<p>以上便是引用作者对这三个函数的详细描述，在函数中的具体代码，我也有相关的注释，慢慢来应该能够理解的。<br><img src="4.png" alt="计算方法"><br><img src="6.png" alt="计算方法"><br><img src="7.png" alt="计算方法"></p>
 <p><a href="https://github.com/afrunk/DataMining/blob/master/Aprior%E5%85%B3%E8%81%94%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95/Apriori%E6%B1%82%E4%BA%8B%E5%8A%A1%E9%A2%91%E7%B9%81%E9%A1%B9%E9%9B%86%E5%92%8C%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99.py" target="_blank" rel="noopener">代码链接</a></p>
-
+<h1 id="四、算法流程"><a href="#四、算法流程" class="headerlink" title="四、算法流程"></a>四、算法流程</h1><p>从Apriori算法原理中我们能够总结如下算法流程，其中输入数据为数据集合D和最小支持度α，输出数据为最大的频繁K项集。</p>
+<ol>
+<li>扫描数据集，得到所有出现过的数据，作为候补1项集</li>
+<li>挖掘频繁K项集<br> a. 扫描计算候选K项集的支持度<br> b. 剪枝去掉候选K项集中支持度低于最小支持度α的数据及，得到频繁K项集，如果频繁K项集为空，则返回频繁K-1项集的集合作为算法结果，算法结束。如果得到的频繁K项集只有一项，则直接返回频繁K项集的集合作为算法结果，算法结束。<br> c. 基于频繁K项集，链接生成候选K+1项集</li>
+<li>利用步骤2，迭代得到k=k+1项集结果。</li>
+</ol>
+<h1 id="五、优缺点"><a href="#五、优缺点" class="headerlink" title="五、优缺点"></a>五、优缺点</h1><h2 id="5-1-优点"><a href="#5-1-优点" class="headerlink" title="5.1 优点"></a>5.1 优点</h2><ul>
+<li>适合稀疏数据集</li>
+<li>算法原理简单，易于实现</li>
+<li>适合事务数据库的关联规则挖掘</li>
+</ul>
+<h2 id="5-2-缺点"><a href="#5-2-缺点" class="headerlink" title="5.2 缺点"></a>5.2 缺点</h2><ul>
+<li>可能产生庞大的候选集</li>
+<li>算法需多次遍历数据集，算法效率低，耗时</li>
+</ul>
+<h1 id="六、算法推导实现流程"><a href="#六、算法推导实现流程" class="headerlink" title="六、算法推导实现流程"></a>六、算法推导实现流程</h1><h1 id="七、Director-Collaborator-Analysis"><a href="#七、Director-Collaborator-Analysis" class="headerlink" title="七、Director Collaborator Analysis"></a>七、Director Collaborator Analysis</h1>
       </div>
       <div class="post-copyright">
     <p class="copyright-item">
