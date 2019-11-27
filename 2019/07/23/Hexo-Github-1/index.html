@@ -173,6 +173,9 @@
 <p>创建成功之后，我们可以通过如下的命令拷贝 SSH key </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ clip &lt; ~/.ssh/id_rsa.pub&quot;</span><br></pre></td></tr></table></figure>
 
+<p>在github上配置好 SSH，但是仍然在 <code>hexo d</code>的时候发现是需要输入密码的，后面我发现在配置文件里的deploy的方式我没有修改好,修改好之后就可以：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:afrunk/afrunk.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
 <h3 id="even-主题配置"><a href="#even-主题配置" class="headerlink" title="even 主题配置"></a>even 主题配置</h3><ol>
 <li><p>在每个md文件头添加description: Blog Tools后面加描述文件即可</p>
 </li>
