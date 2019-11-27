@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="机器学习实战<一>"><meta name="keywords" content="Machine Learning, 天道宫"><link rel="alternate" href="/default" title="天道宫"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<meta name="description" content="机器学习实战<一>："><meta name="keywords" content="Machine Learning, 西瓜书, 天道宫"><link rel="alternate" href="/default" title="天道宫"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
 <link rel="canonical" href="http://afrunk.github.io/2019/11/26/机器学习实战-一/">
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
@@ -40,7 +40,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
 </script>
 
-    <title>机器学习实战<一> - 天道宫</一></title>
+    <title>机器学习实战<一>： - 天道宫</一></title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -109,7 +109,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">机器学习实战<一>
+      <h1 class="post-title">机器学习实战<一>：
         </一></h1>
 
       <div class="post-meta">
@@ -124,7 +124,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、绪言"><span class="toc-text">一、绪言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-基本术语"><span class="toc-text">1.1 基本术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-分类、回归、聚类"><span class="toc-text">1.2 分类、回归、聚类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-监督学习和无监督学习"><span class="toc-text">1.3 监督学习和无监督学习</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、绪言"><span class="toc-text">一、绪言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-基本术语"><span class="toc-text">1.1 基本术语</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-2-分类、回归、聚类"><span class="toc-text">1.2 分类、回归、聚类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-3-监督学习和无监督学习"><span class="toc-text">1.3 监督学习和无监督学习</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-4-假设空间和版本空间"><span class="toc-text">1.4 假设空间和版本空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-5-归纳偏好"><span class="toc-text">1.5 归纳偏好</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-如何引导算法确立正确的偏好"><span class="toc-text">A 如何引导算法确立正确的偏好</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-注意NFT定理的前提"><span class="toc-text">B 注意NFT定理的前提</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-6-发展历程"><span class="toc-text">1.6 发展历程</span></a></li></ol></li></ol>
     </div>
   </div><div class="post-content"><p>傍晚小街路面上沁出微雨后的湿润，和煦的细风吹来，抬头看着天边的晚霞，嗯，明天又是一个好天气。走到水果摊旁，挑了个根底蜷缩、敲起来声音浑浊的青绿西瓜，一边满心期待着皮薄肉厚瓤甜的爽落感，一边愉快地想着，这学期狠下功夫，基本概念弄得清清楚楚明明白白，算法作业也是信手捏来，这门课成绩一定查不了！</p>
 <a id="more"></a>
@@ -152,6 +152,11 @@
 <li>generalization：泛化</li>
 <li>distribution：分布</li>
 <li>independent and identically distributed：独立同分布</li>
+<li>induction：归纳</li>
+<li>deduction：演绎</li>
+<li>concept：概率</li>
+<li>inductive learning：归纳学习</li>
+<li>specialization：特化</li>
 </ul>
 <p>要进行机器学习，先要有数据，假定我们收集了一批关于西瓜的数据，例如：(色泽=青绿；根蒂=硬挺；敲声=清脆)，(色泽=乌黑；根蒂=稍蜷；敲声=沉闷)，(色泽=浅白；根蒂=硬挺；敲声=清脆)，····,每对括号内是一条记录，“=”意思是“取值为”。</p>
 <p>这组记录的集合称为一个 <strong>“数据集”（data set）</strong>，其中每条记录是关于一个时间或一个对象（这里是一个西瓜）的描述，称为一个<strong>示例（instance）或样本（sample）</strong>。反映事件或对象在某方面的表现或性质的事项，例如“色泽”、“根蒂”、“敲声”，称为<strong>属性（attribute）或“特征”（feature）</strong>；属性上的取值，例如 青绿、乌黑称为属性值（attribute value）。<strong>属性张成的空间称为属性空间（attribute space）\样本空间（sample space）或输入空间</strong>。例如我们把色泽、根蒂、敲声作为三个坐标轴，则它们张成一个用于描述西瓜的三维空间，每个西瓜都可在这个空间中找到自己的坐标位置，由于空间中的每个点对应一个坐标向量，因此我们也把一个示例称为一个<strong>特征向量（feature vector)</strong>.</p>
@@ -174,6 +179,33 @@
 <p>需要注意的是，机器学习的目标是使学得的模型能很好地适用于新样本，而不是仅仅在训练样本上工作得很好；即便对聚类这样子的无监督学习任务，我们也希望学得的簇划分适用于没在训练集中出现的样本，学得模型适用于新样本的能力，称为 泛化 （gengralization）能力。尽管训练集通常只是样本空间的一个很小的采样，我们仍希望它嫩很好反映出样本空间的特性，否则就很难期望在训练集上学得的模型能在整个样本空间上都工作得很好。</p>
 </blockquote>
 <p>通常假设样本空间中全体样本服从一个未知分布 （distribution）$ D $，我们获得的每个样本都是独立地从这个分布上采样获得，即 <strong>独立同分布（independent and identically distributed 简称 i.i.d）</strong>，一般而言，训练样本越多，我们得到的关于 $D$的信息越多，这样就越有可能通过学习获得具有强泛化能力的模型。</p>
+<h2 id="1-4-假设空间和版本空间"><a href="#1-4-假设空间和版本空间" class="headerlink" title="1.4 假设空间和版本空间"></a>1.4 假设空间和版本空间</h2><p>归纳（induction）和演绎（deduction）是科学推理的两大基本手段，前者是从特殊到一般的泛化（generalization)过程，即从具体的事实归结出一般性规律，后者则是从一般到特殊的特化（specialization)过程，即从基础原理推演出具体状况。例如在数学公里系统中，基于一组公理和推理规则推导出与之相洽的定理，这是演绎；而从样例中学习，显然是一个归纳的过程，因此亦称为归纳学习（inductive learning）。</p>
+<p><strong>归纳学习</strong>：<br>    - 狭义：要求从训练数据中学得概率（concept)，因此亦被称为概念学习或概念形成。因为技术实现较难，现在的大多数技术是产生黑箱模型，有所了解有助于理解机器学习的一些基础思想。<br>    - 广义：相当于从样例中学习</p>
+<p><strong>西瓜问题的假设空间</strong>：可以有许多策略对这个假设空间进行搜索，例如自顶向下、从一般到特殊，或是自底向上、从特殊到一般，搜索过程中可以不断删除与正例不一致的假设、和（或）反例一致的假设，最终将会获得与训练集一致（即对所有训练样本能给进行正确判断）的假设，这就是我们学得的结果。</p>
+<p><img src="1.png" alt="西瓜问题的假设空间"></p>
+<p><strong>西瓜问题的版本空间</strong>：需要注意的是，现实问题中我们常面临很大的假设空间，学习过程是基于有限样本训练集进行的，因此，可能有多个假设与训练集一致，即存在着一个与训练集一致的假设集合，称之为 版本空间。</p>
+<p><img src="2.png" alt="西瓜问题的假设空间"></p>
+<h2 id="1-5-归纳偏好"><a href="#1-5-归纳偏好" class="headerlink" title="1.5 归纳偏好"></a>1.5 归纳偏好</h2><p>如果有一个训练样本满足上述三个假设，那么哪一个假设更好呢？对于一个具体的学习算法来说，必须产生一个模型。这时，学习算法本身的偏好就会起到关键的作用。若我们的算法喜欢<strong><em>尽可能特殊</em></strong> 的模型：<strong>好瓜-（色泽=*）^(根蒂=蜷缩)^(敲声=浑浊)</strong>,若我们的算法喜欢 <strong><em>尽可能一般</em></strong> 的模型：<strong>好瓜-（色泽=*）^(根蒂=蜷缩)^(敲声=*)</strong>，机器学习算法在学习过程中对某种类型假设的偏好，称为 <strong>归纳偏好</strong> 。</p>
+<p>任何一个有效的机器学习算法必有其归纳偏好，否则它被假设空间中看似在训练集上等效的假设所迷惑，而无法产生确定的学习结果。</p>
+<blockquote>
+<p>归纳偏好的作用在图1.3这个回归学习图中可能更直观，这里的每个训练样本是图中的一个点（x,y），要学得一个与训练集一直的模型，相当于找到一条穿过所有训练样本点的曲线，显然，对有限个样本点组成的训练集，存在着很多条曲线与其一致，我们的算法必须有某种偏好，才能产出它认为正确的模型。例如若认为相似的样本应有相似的输出（例如在各种属性上都很相像的西瓜，成熟程度应该比较接近），则对应的学习算法可能偏好图1.3中比较平滑的曲线A而不是比较崎岖的曲线B。</p>
+</blockquote>
+<p><img src="3.png" alt="存在多条曲线与有限样本训练集一致"></p>
+<h3 id="A-如何引导算法确立正确的偏好"><a href="#A-如何引导算法确立正确的偏好" class="headerlink" title="A 如何引导算法确立正确的偏好"></a>A 如何引导算法确立正确的偏好</h3><p>Occam`s razor 是一种常用的、自然科学研究中最基本的原则，<strong>即 若有多个假设与观察一致，则选最简单的那个</strong>，如果采用这个原则，并且假设我们认为更平滑意味着更简单，则在图中我们会自然地偏好平滑的曲线A.</p>
+<blockquote>
+<p>事实上，归纳偏好对应了学习算法本身所做出的关于 什么样的模型更好 假设，在具体的现实问题中，这个假设是否成立，集算法的归纳偏好是否与问题本身匹配，大多数时候直接决定了算法能否取得好性能。</p>
+</blockquote>
+<p>但是如果我们采取的是 描述简单性来选择算法的话，会出现一种情况。会不会在某种情况下，B比A的泛化能力更强？这是完全有可能的，而且根据公式推导我们会得到一个结论：<strong>NFT，No Free Lunch Theorem 没有免费午餐定理</strong>，在任何一个算法中，对于任意两个学习算法不管是A还是B他们的总误差与学习算法是无关的。</p>
+<p><img src="4.png" alt="NFT定理的推导过程"></p>
+<h3 id="B-注意NFT定理的前提"><a href="#B-注意NFT定理的前提" class="headerlink" title="B 注意NFT定理的前提"></a>B 注意NFT定理的前提</h3><p>NFL定理有一个重要前提：所有问题出现的机会相同、或所有问题同等重要，但实际情况并不是这样。很多时候，我们只关注自己正在试图解决的问题（例如某个具体应用任务），希望为它找到一个解决方案，至于这个解决方案在别的问题、甚至相似的问题上是否为好方案，我们并不关心。</p>
+<p><img src="5.png" alt="NFT定理的推导过程"></p>
+<p><strong>所以 NFT定理最主要的寓意就是让我们清楚的认识到，脱离具体问题，空泛地谈论 什么学习算法更好 毫无意义，因为考虑所有潜在的问题，则所有学习算法都一样好，要谈论算法的相对优劣，必须要针对具体的学习问题；在某些问题上表现好的学习算法，在另一些问题上却可能不尽人意，学习算法自身的归纳偏好于问题是否相配，往往会起到绝对性的作用</strong></p>
+<h2 id="1-6-发展历程"><a href="#1-6-发展历程" class="headerlink" title="1.6 发展历程"></a>1.6 发展历程</h2><p>机器学习是人工智能（artificial intelligence）研究发展到一定阶段的必然产物。</p>
+<ol>
+<li>二十世纪五十年代到七十年代初：人工智能研究处于推理期</li>
+<li>二十世纪七十年代：LLP</li>
+<li>二十世纪八十年代：样例学习<br> a. 决策树:典型的决策树学习以信息论为基础，以信息熵的最小化为目标，直接模拟了人类对概念进行判定的树形流程。<br> b. 基于逻辑的学习</li>
+</ol>
 
       </div>
       <div class="post-copyright">
@@ -192,6 +224,7 @@
       <footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Machine-Learning/">Machine Learning</a>
+            <a href="/tags/西瓜书/">西瓜书</a>
             </div>
         
         <nav class="post-nav"><a class="next" href="/2019/11/24/七月 Kaggle Notes 一：机器学习解决方法问题综述课/">
