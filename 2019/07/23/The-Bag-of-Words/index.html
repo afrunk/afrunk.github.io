@@ -126,8 +126,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、Sklearn"><span class="toc-text">一、Sklearn</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、词袋模型"><span class="toc-text">二、词袋模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-词袋模型在各个领域的使用"><span class="toc-text">2.1 词袋模型在各个领域的使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Sklearn-BoW-的使用方法"><span class="toc-text">2.2 Sklearn-BoW 的使用方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、TF-IDF"><span class="toc-text">三、TF-IDF</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Sklearn-TF-IDF-的使用方法"><span class="toc-text">3.1 Sklearn-TF-IDF 的使用方法</span></a></li></ol></li></ol>
     </div>
-  </div><div class="post-content"><p>本文的背景是Kaggle题目：Sentiment Analysis on Movie Reviews中使用<code>Sklearn</code>的词袋模型和TF-IDF模型来进行特征工程处理。所以从这两个模型出发来学习下Sklearn这个机器学习著名的工具。</p>
-<a id="more"></a>
+  </div><div class="post-content"><p>本文的背景是Kaggle题目：Sentiment Analysis on Movie Reviews中使用<code>Sklearn</code>的词袋模型和TF-IDF模型来进行特征工程处理。所以从这两个模型出发来学习下Sklearn这个机器学习著名的工具。<br><a id="more"></a></p>
 <h2 id="一、Sklearn"><a href="#一、Sklearn" class="headerlink" title="一、Sklearn"></a>一、Sklearn</h2><p>首先附上 <a href="https://scikit-learn.org/stable/index.html#" target="_blank" rel="noopener">Sklearn</a> 的中文文档：<a href="https://sklearn.apachecn.org/#/" target="_blank" rel="noopener">scikit-learn 0.21.x 中文文档</a>.(这里不推荐使用其他的书，因为已经有了官方文档了，如果硬要看的话有《Sklearn与TensorFlow机器学习实用指南》以及莫烦和其他有关 Sklearn 的视频。)该文档也是ApacheCN 组织翻译的，之前我也看了他们的教程(比如这个学习路线：<a href="https://github.com/apachecn/ai-roadmap/tree/master/v1.0" target="_blank" rel="noopener">ApacheCN 人工智能知识树</a>)，总结的还算不错，视频的话只能说一般，不过不管怎么样说他们还是很优秀的。</p>
 <p>首先，给出定义：Scikit-learn 是基于 Python 语言的机器学习工具。</p>
 <ol>
@@ -153,7 +152,7 @@
 <li>统计修订词特征值 counting</li>
 <li>标准化 normalizing</li>
 </ul>
-<h3 id="2-1-词袋模型在各个领域的使用"><a href="#2-1-词袋模型在各个领域的使用" class="headerlink" title="2.1 词袋模型在各个领域的使用"></a>2.1 词袋模型在各个领域的使用</h3><ol start="0">
+<h3 id="2-1-词袋模型在各个领域的使用"><a href="#2-1-词袋模型在各个领域的使用" class="headerlink" title="2.1 词袋模型在各个领域的使用"></a>2.1 词袋模型在各个领域的使用</h3><ol>
 <li><p><strong>文本处理领域</strong><br>假设有5类主题，我们的任务是来了一篇文档，判断它属于哪个主题。在训练集中，我们有若干篇文档，它们的主题类型是已知的。我们从中选出一些文档，每篇文档内有一些词，我们利用这些词来构建词袋。我们的词袋可以是这种形式</p>
 <blockquote>
 <p>{‘watch’,’sports’,’phone’,’like’,’roman’,..}</p>
@@ -168,7 +167,6 @@
 <p><strong>下文只讨论Bow在词袋模型的处理方法</strong></p>
 <h3 id="2-2-Sklearn-BoW-的使用方法"><a href="#2-2-Sklearn-BoW-的使用方法" class="headerlink" title="2.2 Sklearn-BoW 的使用方法"></a>2.2 Sklearn-BoW 的使用方法</h3><p>在词袋模型统计词频的时候，可以使用 sklearn 中的 CounntVectorizer 来完成.如果只是为了可以让算法识别文本的话而进行向量化，那么到了<code>X变量</code>这一步就已经完了。后续的测试集和验证集直接调用<code>fit_transform()</code>即可。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> CountVectorizer</span><br><span class="line">vectorizer = CountVectorizer(min_df=<span class="number">1</span>)</span><br><span class="line"><span class="comment"># 查看参数值 </span></span><br><span class="line">print(vectorizer)</span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">CountVectorizer(analyzer='word', binary=False, decode_error='strict',</span></span><br><span class="line"><span class="string">        dtype=&lt;class 'numpy.int64'&gt;, encoding='utf-8', input='content',</span></span><br><span class="line"><span class="string">        lowercase=True, max_df=1.0, max_features=None, min_df=1,</span></span><br><span class="line"><span class="string">        ngram_range=(1, 1), preprocessor=None, stop_words=None,</span></span><br><span class="line"><span class="string">        strip_accents=None, token_pattern='(?u)\\b\\w\\w+\\b',</span></span><br><span class="line"><span class="string">        tokenizer=None, vocabulary=None)</span></span><br><span class="line"><span class="string">在kaggle 电影评论情感分析中我们使用到了</span></span><br><span class="line"><span class="string">- analyzer = 'word'</span></span><br><span class="line"><span class="string">- max_features = 150000 词库最大词数量</span></span><br><span class="line"><span class="string">- stop_words = 导入处理后的停用词列表</span></span><br><span class="line"><span class="string">- ngram_range=(1,4)</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 导入待处理的文本列表</span></span><br><span class="line">corpus = [</span><br><span class="line">    <span class="string">'This  is the first document'</span> ,</span><br><span class="line">    <span class="string">'This is the second second document'</span>,</span><br><span class="line">    <span class="string">'And the thrid one'</span>,</span><br><span class="line">    <span class="string">'Is this the first documen?'</span>,</span><br><span class="line">]</span><br><span class="line">X = vectorizer.fit_transform(corpus)<span class="comment"># fit_transform 统计各个词语出现的次数</span></span><br><span class="line">print(X)</span><br><span class="line"><span class="comment"># 输出中 左边第一个数字是文本的序号 </span></span><br><span class="line"><span class="comment"># 第二个数字是词的序号 该词的序号是基于所有文档的  即后续输出的featre_name</span></span><br><span class="line"><span class="comment"># 第三个数字就是我们的词频</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">  (0, 2)	1</span></span><br><span class="line"><span class="string">  (0, 3)	1</span></span><br><span class="line"><span class="string">  (0, 7)	1</span></span><br><span class="line"><span class="string">  (0, 4)	1</span></span><br><span class="line"><span class="string">  (0, 8)	1</span></span><br><span class="line"><span class="string">  (1, 6)	2</span></span><br><span class="line"><span class="string">  (1, 2)	1</span></span><br><span class="line"><span class="string">  (1, 7)	1</span></span><br><span class="line"><span class="string">  (1, 4)	1</span></span><br><span class="line"><span class="string">  (1, 8)	1</span></span><br><span class="line"><span class="string">  (2, 5)	1</span></span><br><span class="line"><span class="string">  (2, 9)	1</span></span><br><span class="line"><span class="string">  (2, 0)	1</span></span><br><span class="line"><span class="string">  (2, 7)	1</span></span><br><span class="line"><span class="string">  (3, 1)	1</span></span><br><span class="line"><span class="string">  (3, 3)	1</span></span><br><span class="line"><span class="string">  (3, 7)	1</span></span><br><span class="line"><span class="string">  (3, 4)	1</span></span><br><span class="line"><span class="string">  (3, 8)	1</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">feature_name = vectorizer.get_feature_names()</span><br><span class="line"><span class="comment"># get_feature_names 可获取词袋中所有文本的关键词</span></span><br><span class="line">print(feature_name)</span><br><span class="line"><span class="comment">#['and', 'documen', 'document', 'first', 'is', 'one', 'second', 'the', 'this', 'thrid']</span></span><br><span class="line"></span><br><span class="line">print(X.toarray())</span><br><span class="line"><span class="comment"># 通过toarry查看词频矩阵的结果</span></span><br><span class="line"><span class="comment"># 由于大部分文本都只会用词汇表中很少一部分的词，因此词向量中有大量的0</span></span><br><span class="line"><span class="comment"># 即稀疏矩阵</span></span><br><span class="line">[[<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">2</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span>]</span><br><span class="line"> [<span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span>]</span><br><span class="line"> [<span class="number">0</span> <span class="number">1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">0</span>]]</span><br></pre></td></tr></table></figure>
-
 <p>官方案例中并没有对 <code>CountVectorizer()</code>的具体参数进行描述，这里附上一篇文章: <a href="https://blog.csdn.net/weixin_38278334/article/details/82320307" target="_blank" rel="noopener">Sklearn - CountVetorizer详解</a>。</p>
 <p>一般要设置的参数是：ngram_range，max_df,min_df,max_features 等，之前的kaggle比赛中我们就使用了：</p>
 <ul>
@@ -178,6 +176,7 @@
 <li>ngram_range=(1,4)</li>
 </ul>
 <p>这里将如下函数参数作用进行列举：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -185,7 +184,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>analyzer</td>
 <td>一般使用默认，设置为string类型，如‘word’，‘char’，‘char_wb’，还可以设置为 callable类型</td>
 </tr>
@@ -209,7 +209,10 @@
 <td>min_df</td>
 <td>类似于max_df，不同之处在于如果某个词的document frequence小于min_df，则这个词不会被当作关键词</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -217,7 +220,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>vocabulary_</td>
 <td>词汇表；字典型</td>
 </tr>
@@ -229,7 +233,10 @@
 <td>stop_words_</td>
 <td>返回停用词表</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -237,7 +244,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>fit_transform(X)</td>
 <td>拟合模型，并返回文本矩阵</td>
 </tr>
@@ -249,7 +257,9 @@
 <td>transform()</td>
 <td>将输入的数组中的每个元素进行分隔，然后使用fit()中生产的编码字典，将原单词转化成编码，数据以<code>csr_matrix</code>的形式返回</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>具体的使用方法可以参考：<a href="https://afrunk.github.io/2019/07/23/kaggle-movie-reviews/">Kaggle-Sentiment Analysis on Moview Reviews</a></p>
 <ul>
 <li>对于方法表最直观的解释就是使用<code>fit_transform()</code> 或<code>fit()</code>函数可以直接得到一个矩阵，这个一般是为做语料库时使用。</li>
@@ -257,19 +267,12 @@
 <li><a href="https://blog.csdn.net/songbinxu/article/details/80366950" target="_blank" rel="noopener">自己实现一个 CountVectorizer</a></li>
 </ul>
 <h2 id="三、TF-IDF"><a href="#三、TF-IDF" class="headerlink" title="三、TF-IDF"></a>三、TF-IDF</h2><p>有些词在文本中尽管词频高，但是却不重要，这时我们考虑使用TF-IDF技术。</p>
-<p>TF-IDF(Teram Frequency-Inverse Document Frequency)是一种用于资讯检索与文本挖掘的常用加权技术。TF-IDF是一种统计方法，用以评估一个字词对于一个文件集或一个语料库中的其中一份文件的重要性。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜索引擎应用，作为文件与用户查询之间相关程度的度量或评级。<br>TF-IDF的主要思想是：如果某个词或短语在一篇文章中出现的频率TF高，并且在其他文章中很少出现，则认为此词或者短语具有很好的类别区分能力，适合用来分类。TF-IDF实际上是：TF * IDF。<br>（1）词频（Teram Frequency，TF）指的是某一个给定的词语在该文件中出现的频率。即词w在文档d中出现的次数count(w, d)和文档d中总词数size(d)的比值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf(w,d) = count(w, d) / size(d)</span><br></pre></td></tr></table></figure>
-
+<p>TF-IDF(Teram Frequency-Inverse Document Frequency)是一种用于资讯检索与文本挖掘的常用加权技术。TF-IDF是一种统计方法，用以评估一个字词对于一个文件集或一个语料库中的其中一份文件的重要性。字词的重要性随着它在文件中出现的次数成正比增加，但同时会随着它在语料库中出现的频率成反比下降。TF-IDF加权的各种形式常被搜索引擎应用，作为文件与用户查询之间相关程度的度量或评级。<br>TF-IDF的主要思想是：如果某个词或短语在一篇文章中出现的频率TF高，并且在其他文章中很少出现，则认为此词或者短语具有很好的类别区分能力，适合用来分类。TF-IDF实际上是：TF * IDF。<br>（1）词频（Teram Frequency，TF）指的是某一个给定的词语在该文件中出现的频率。即词w在文档d中出现的次数count(w, d)和文档d中总词数size(d)的比值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf(w,d) = count(w, d) / size(d)</span><br></pre></td></tr></table></figure></p>
 <p>这个数字是对词数 (term count) 的归一化，以防止它偏向长的文件。（同一个词语在长文件里可能会比短文件有更高的词数，而不管该词语重要与否。）</p>
-<p>（2）逆向文件频率（Inverse Document Frequency，IDF）是一个词语普遍重要性的度量。某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到。即文档总数n与词w所出现文件数docs(w, D)比值的对数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">idf = log(n / docs(w, D))</span><br></pre></td></tr></table></figure>
-
-<p>TF-IDF根据 tf 和 idf 为每一个文档d和由关键词w[1]…w[k]组成的查询串q计算一个权值，用于表示查询串q与文档d的匹配度：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf-idf(q, d) = sum &#123; i = 1..k | tf-idf(w[i], d) &#125; = sum &#123; i = 1..k | tf(w[i], d) * idf(w[i]) &#125;</span><br></pre></td></tr></table></figure>
-
+<p>（2）逆向文件频率（Inverse Document Frequency，IDF）是一个词语普遍重要性的度量。某一特定词语的IDF，可以由总文件数目除以包含该词语之文件的数目，再将得到的商取对数得到。即文档总数n与词w所出现文件数docs(w, D)比值的对数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">idf = log(n / docs(w, D))</span><br></pre></td></tr></table></figure></p>
+<p>TF-IDF根据 tf 和 idf 为每一个文档d和由关键词w[1]…w[k]组成的查询串q计算一个权值，用于表示查询串q与文档d的匹配度：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tf-idf(q, d) = sum &#123; i = 1..k | tf-idf(w[i], d) &#125; = sum &#123; i = 1..k | tf(w[i], d) * idf(w[i]) &#125;</span><br></pre></td></tr></table></figure></p>
 <p>某一特定文件内的高词语频率，以及该词语在整个文件集合中的低文件频率，可以产生出高权重的TF-IDF。因此，TF-IDF倾向于过滤掉常见的词语，保留重要的词语。</p>
 <h3 id="3-1-Sklearn-TF-IDF-的使用方法"><a href="#3-1-Sklearn-TF-IDF-的使用方法" class="headerlink" title="3.1 Sklearn-TF-IDF 的使用方法"></a>3.1 Sklearn-TF-IDF 的使用方法</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.feature_extraction.text <span class="keyword">import</span> TfidfVectorizer</span><br><span class="line">tfidf2 = TfidfVectorizer()</span><br><span class="line">re = tfidf2.fit_transform(corpus)</span><br><span class="line"><span class="keyword">print</span> (re)</span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">  (0, 8)	0.4181266243877562</span></span><br><span class="line"><span class="string">  (0, 4)	0.4181266243877562</span></span><br><span class="line"><span class="string">  (0, 7)	0.3418459132932508</span></span><br><span class="line"><span class="string">  (0, 3)	0.5164695651831305</span></span><br><span class="line"><span class="string">  (0, 2)	0.5164695651831305</span></span><br><span class="line"><span class="string">  (1, 8)	0.2671444810352856</span></span><br><span class="line"><span class="string">  (1, 4)	0.2671444810352856</span></span><br><span class="line"><span class="string">  (1, 7)	0.2184081179582327</span></span><br><span class="line"><span class="string">  (1, 2)	0.329976581049803</span></span><br><span class="line"><span class="string">  (1, 6)	0.8370669044188771</span></span><br><span class="line"><span class="string">  (2, 7)	0.2884767487500274</span></span><br><span class="line"><span class="string">  (2, 0)	0.5528053199908667</span></span><br><span class="line"><span class="string">  (2, 9)	0.5528053199908667</span></span><br><span class="line"><span class="string">  (2, 5)	0.5528053199908667</span></span><br><span class="line"><span class="string">  (3, 8)	0.3878225151467608</span></span><br><span class="line"><span class="string">  (3, 4)	0.3878225151467608</span></span><br><span class="line"><span class="string">  (3, 7)	0.3170703183040649</span></span><br><span class="line"><span class="string">  (3, 3)	0.4790379614294201</span></span><br><span class="line"><span class="string">  (3, 1)	0.6075989123184679</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
-
 <p>使用方法与 BoW的类似，这里不再赘述，详情可以参考：<a href="http://afrunk.github.io/2019/07/23/kaggle-movie-reviews/">Kaggle-Sentiment Analysis on Moview Reviews</a></p>
 
       </div>

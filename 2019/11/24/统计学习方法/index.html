@@ -127,13 +127,10 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一-统计学习"><span class="toc-text">一 统计学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-特点"><span class="toc-text">1.1 特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-方法"><span class="toc-text">1.2 方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-监督学习"><span class="toc-text">二 监督学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-基本概念"><span class="toc-text">2.1 基本概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-问题的形式化"><span class="toc-text">2.2 问题的形式化</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-统计学习的三要素"><span class="toc-text">三 统计学习的三要素</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-损失函数"><span class="toc-text">3.1 损失函数</span></a></li></ol></li></ol>
     </div>
-  </div><div class="post-content"><hr>
-作者在前言中大致的提到了自己的研究方向，推荐了对于初学者来说相对深奥的《统计学习基础》。讲解了本书的面向读者为：面向将统计学习方法作为工具的科研人员和学生，特别是从事信息检索、自然语言处理、文本数据挖掘及相关研究与开发的科研人员与学生。**在西瓜书中就提到了机器学习和数据挖掘之间的关系，而统计学主要是通过机器学习对数据挖掘发挥影响。**，由此可以得到，学习机器学习的各大算法不也是学习统计学习的方法。
-
+  </div><div class="post-content"><p><hr><br>作者在前言中大致的提到了自己的研究方向，推荐了对于初学者来说相对深奥的《统计学习基础》。讲解了本书的面向读者为：面向将统计学习方法作为工具的科研人员和学生，特别是从事信息检索、自然语言处理、文本数据挖掘及相关研究与开发的科研人员与学生。<strong>在西瓜书中就提到了机器学习和数据挖掘之间的关系，而统计学主要是通过机器学习对数据挖掘发挥影响。</strong>，由此可以得到，学习机器学习的各大算法不也是学习统计学习的方法。</p>
 <p>本书系统而详细的介绍统计学习的方法，在内容选取上，侧重介绍那些最重要、最常用的方法，特别是 <strong>关于分类与标注问题的方法（聚类无）</strong>。每个章节可以单独阅读！</p>
 <p>西瓜书和《统计学习方法》参照着阅读，以《统计学习方法》为主，西瓜书为辅，对每个模块进行深入学习，学习各个模块涉及的算法与具体在竞赛中的应用，读书笔记更注重推导，在<a href="https://afrunk.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E7%B3%BB%E5%88%97/">机器学习算法系列</a>，我将会将具体算法的实现作为主要目的。</p>
 <a id="more"></a>
-
 <p>本章节叙述统计学习方法的一些基本概念，首先叙述统计学习的定义、研究对象与方法；然后叙述监督学习，这是本书的主要内容；接着提出统计学习方法的三要素：模型、策略和算法；介绍模型选择，包括正则化、交叉验证与学习的泛化能力；介绍生成模型与判别模型；最后介绍监督学习方法的应用：分类问题、标注问题与回归问题。</p>
 <ul>
 <li><a href="https://github.com/SmirkCao/Lihang" target="_blank" rel="noopener">github学习笔记资料</a></li>
@@ -165,7 +162,7 @@
 </ul>
 </li>
 <li><strong>特征向量</strong>：每个具体的输入是一个实例，通常由特征向量表示，所有特征向量存在的空间称为特征空间。特征空间的每一维对应一个特征。模型实际上都是定义在特征空间上的。</li>
-<li><strong>联合概率分布</strong>：以 $P(X=a,Y=b)$ 假设 $X=a$ 且 $Y=b$ 发生的概率，所有可能发生的概率形成 联合概率质量函数为 $f(x,y)$<br>$$f(a,b)=P(X=a,Y=b) \qquad  0\leq f(a,b) \leq 1 \qquad 0\leq f(a,b) \leq 1 $$</li>
+<li><strong>联合概率分布</strong>：以 $P(X=a,Y=b)$ 假设 $X=a$ 且 $Y=b$ 发生的概率，所有可能发生的概率形成 联合概率质量函数为 $f(x,y)$<script type="math/tex; mode=display">f(a,b)=P(X=a,Y=b) \qquad  0\leq f(a,b) \leq 1 \qquad 0\leq f(a,b) \leq 1</script></li>
 <li><strong>假设空间</strong>：模型属于由输入空间到输出空间的映射的集合，这个集合就是 hypothesis space。</li>
 </ol>
 <h3 id="2-2-问题的形式化"><a href="#2-2-问题的形式化" class="headerlink" title="2.2 问题的形式化"></a>2.2 问题的形式化</h3><p>监督学习利用训练数据集学习一个模型，再用模型对测试样本集进行 <strong>prediction</strong>。</p>
@@ -180,7 +177,7 @@
 <ul>
 <li>0-1 loss function</li>
 </ul>
-<p>$$ f(x)=\left{<br>\begin{aligned}<br>x &amp; = &amp; \cos(t) \<br>y &amp; = &amp; \sin(t) \<br>z &amp; = &amp; \frac xy<br>\end{aligned}<br>\right.<br>$$</p>
+<p>\begin{equation}\begin{split} a&amp;=b+c-d\\<br>&amp;\quad +e-f\\<br>&amp;=g+h\\<br>&amp; =i<br>\end{split}\end{equation}</p>
 
       </div>
       <div class="post-copyright">
