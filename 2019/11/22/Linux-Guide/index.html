@@ -121,7 +121,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#No-1-如何连接Ubuntu-服务器"><span class="toc-text">No.1 如何连接Ubuntu 服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NO-2-如何创建一个文件"><span class="toc-text">NO.2 如何创建一个文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#No-3-如何使用和查看python版本"><span class="toc-text">No.3 如何使用和查看python版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#No-4-如何给服务器装可视化界面"><span class="toc-text">No.4 如何给服务器装可视化界面</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#No-1-如何连接Ubuntu-服务器"><span class="toc-text">No.1 如何连接Ubuntu 服务器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#NO-2-如何创建一个文件"><span class="toc-text">NO.2 如何创建一个文件</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#No-3-如何使用和查看python版本"><span class="toc-text">No.3 如何使用和查看python版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#No-4-如何给服务器装可视化界面"><span class="toc-text">No.4 如何给服务器装可视化界面</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#No-5-嵌入式考核"><span class="toc-text">No.5 嵌入式考核</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-安装RedHat系统"><span class="toc-text">5.1 安装RedHat系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#A-安装-VMware-虚拟机"><span class="toc-text">A 安装 VMware 虚拟机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#B-安装RedHat系统"><span class="toc-text">B 安装RedHat系统</span></a></li></ol></li></ol></li></ol>
     </div>
   </div><div class="post-content"><p>Linux Guide</p>
 <a id="more"></a>
@@ -132,6 +132,12 @@
 <h1 id="No-3-如何使用和查看python版本"><a href="#No-3-如何使用和查看python版本" class="headerlink" title="No.3 如何使用和查看python版本"></a>No.3 如何使用和查看python版本</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@iZm7vvvi84vbp1Z:~# python2 --version</span><br><span class="line">Python 2.7.15+</span><br><span class="line">root@iZm7vvvi84vbp1Z:~# python3 --version</span><br><span class="line">Python 3.6.8</span><br><span class="line">root@iZm7vvvi84vbp1Z:~# python3</span><br><span class="line">Python 3.6.8 (default, Oct  7 2019, 12:59:55) </span><br><span class="line">[GCC 8.3.0] on linux</span><br><span class="line">Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.</span><br><span class="line">&gt;&gt;&gt; exit()</span><br></pre></td></tr></table></figure>
 <h1 id="No-4-如何给服务器装可视化界面"><a href="#No-4-如何给服务器装可视化界面" class="headerlink" title="No.4 如何给服务器装可视化界面"></a>No.4 如何给服务器装可视化界面</h1><p>我们进入 Unbutu 的服务器之后输入如下命令即可进行桌面软件的安装<br><a href="https://blog.csdn.net/weixin_39278265/article/details/86549600" target="_blank" rel="noopener">参考链接</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">apt-get install ubuntu-desktop # 安装桌面软件</span><br><span class="line">reboot # 重启</span><br></pre></td></tr></table></figure>
+<h1 id="No-5-嵌入式考核"><a href="#No-5-嵌入式考核" class="headerlink" title="No.5 嵌入式考核"></a>No.5 嵌入式考核</h1><h2 id="5-1-安装RedHat系统"><a href="#5-1-安装RedHat系统" class="headerlink" title="5.1 安装RedHat系统"></a>5.1 安装RedHat系统</h2><h3 id="A-安装-VMware-虚拟机"><a href="#A-安装-VMware-虚拟机" class="headerlink" title="A 安装 VMware 虚拟机"></a>A 安装 VMware 虚拟机</h3><p><img src="3.png" alt></p>
+<p>点击上图的安装软件，接受许可条款，继续下一步。 <strong>不要选择增强型驱动程序</strong>。全部完成之后点击输入许可证，在给的文件中已有可以使用的许可证，这里将可以使用的许可证备份下，大家可以自取。</p>
+<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">VMware <span class="number">2019</span> v15.x 永久许可证激活密钥</span><br><span class="line">YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8</span><br><span class="line">UG5J2-0ME12-M89WY-NPWXX-WQH88</span><br><span class="line">UA5DR-2ZD4H-089FY-6YQ5T-YPRX6</span><br></pre></td></tr></table></figure>
+<h3 id="B-安装RedHat系统"><a href="#B-安装RedHat系统" class="headerlink" title="B 安装RedHat系统"></a>B 安装RedHat系统</h3><p><img src="4.png" alt><br><img src="5.png" alt><br><img src="6.png" alt><br><img src="7.png" alt><br><img src="8.png" alt><br><strong>自定义硬件配置</strong><br><img src="9.png" alt><br><strong>配置好了之后点击完成之后启动虚拟机</strong><br><img src="10.png" alt></p>
+<p>在安装的时候如何鼠标不见了同时按住<strong>Ctrl+ALT</strong>，<strong>CTRL+ALT+ENTER</strong>是全屏。</p>
+
       </div>
       <div class="post-copyright">
     <p class="copyright-item">
@@ -178,7 +184,7 @@
     <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
   </span>
 
-  <span class="copyright-year">&copy;2019<span class="heart">
+  <span class="copyright-year">&copy;2019 - 2020<span class="heart">
       <i class="iconfont icon-heart"></i>
     </span>
     <span class="author">Afrunk</span>
