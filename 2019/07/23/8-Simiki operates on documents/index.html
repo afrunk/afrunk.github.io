@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Simiki operates on documents"><meta name="keywords" content="Blog, 天道宫"><link rel="alternate" href="/default" title="天道宫"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.io/2019/07/23/8-Simiki operates on documents/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
+</script>
+
+    <title>Simiki operates on documents - 天道宫</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">天道宫</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">天道宫</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/about/">
+            About
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Simiki operates on documents
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2019-07-23
+        </span><span class="post-category">
+            <a href="/categories/而已/">而已</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础配置"><span class="toc-text">基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速开始"><span class="toc-text">快速开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用问题"><span class="toc-text">使用问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署在服务器上"><span class="toc-text">部署在服务器上</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol></li></ol>
+    </div>
+  </div><div class="post-content"><h2 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h2><p><a href="http://simiki.org/zh-docs/" target="_blank" rel="noopener">Simiki</a>:一个简单的个人 Wiki框架。使用 Markdown 书写 Wiki，生成静态 HTML 页面。Wiki 源文件按目录分类存放，方便管理维护。</p>
+<a id="more"></a>
+<h3 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h3><ul>
+<li>使用 Python 环境安装：<code>pip install simiki</code>，因为simiki是使用 Python2 开发的。因为 windows 不是很好的支持 simiki，导致我现在安装不上这个模板。然后在命令行中允许 pip install simiki，但是总是报错：<code>Cannot uninstall &#39;PyYAML&#39;. It is a distutils installed project and thus we cannot accurately determine which files belong to it which would lead to only a partial uninstall.</code>，于是我在Andconda 中搜索 PyYAML 这个库，找到<code>D:\andconda\pkgs\pyyaml-3.13-py37hfa6e2cd_0\Lib\site-packages\PyYAML-3.13-py3.7.egg-info</code>，将此文件删除后，再重新运行 <code>pip install simiki</code>。</li>
+<li>新建目录 myWiki：<code>mkdir myWiki</code></li>
+<li>进入目录，并初始化：<code>cd myWiki &amp;&amp; simiki init</code></li>
+<li>渲染 Wiki：<code>simiki g</code></li>
+<li>本地预览：<code>simiki p</code></li>
+<li>创建新的文件：<code>simiki n -t “标题” -c 分类</code></li>
+<li>如何更换主题：将下载下来的主题存放在Wiki\themes文件夹下即可，然后在_config.yml 文件中修改 theme后面的文件名即可。</li>
+<li>如何创建下一步分类：simiki n -t “Django Admin Mooc Project” -c Project\Django 这样子就可以将我们新建的<code>Django Admin Mooc Project</code> 存放在 Project下的 Django 目录下！但是存在一个问题就是我们在目录页面点击分类下的文章时会出现无法找到HTML的情况，于是我把output文件夹下的 Django 文件夹中文件就拉出来了，然后把Django文件夹删掉之后就可以正常访问了，不知道会不会在后续的更新的时候带来什么不便，反正我这个暂时只是放在自己的本地访问查看总结即可，没有那么多的名堂。</li>
+</ul>
+<p>看来是 Python 版本的问题，Simiki 暂时不支持 Python 3.7 ，所以我就又重新安装了一个 Python 2.7 ，<del>但是吧有点麻烦的是我需要进入 Python 2的命令行的时候就需要打开 Anaconda，这就是很麻烦的一件事情。</del> 使用虚拟环境管理工具，我只需要在 Pycharm 的 Terminal 中输入 <code>activate python2</code> 即可激活我们的虚拟环境，如果想要关闭的话输入<code>conda.bat deactivate</code>即可。然后就是本地预览的地址是：<code>localhost:8000</code>，但是为什么就不能够提示一下呢？很烦，折腾了很久。</p>
+<h3 id="使用问题"><a href="#使用问题" class="headerlink" title="使用问题"></a>使用问题</h3><ul>
+<li><strong>如何启动Simiki</strong>：隔了一段时间后再使用Simike来记录学习的内容发现都忘记了如何来启动Simiki，我们打开Pycharm即可，然后进入Terminal之后输入 <code>activate python2</code>，然后进入到我们的存放Simiki的目录下去<code>E:\Simiki\Wiki</code>，启动项目<code>simiki p</code><ul>
+<li>发现不使用Anaconda的话就不能够使用上面的语句来激活虚拟环境了，那么我就需要在基于python2的环境下新建一个虚拟环境然后进行开发和部署，然后突然发现为什么在服务器的pycharm上创建了虚拟环境之后，关闭之前的Termial之后再打开进入的就是虚拟环境了。不过也不去深究了。</li>
+</ul>
+</li>
+<li><strong>如何更新数据</strong>：上面对于生成数据已经讲得很清晰了，但是对于更新数据并没有十分的清晰。我们只需要进入到上面存放md文件的目录下将我们所不需要的文件进行删除，然后输入<code>simiki g</code>，在输入<code>simiki p</code>即可将我们所需要删除的部分删除掉了。</li>
+<li><strong>如何像Blog一样进行分类管理</strong>：blog还是适合写一些某一个问题的建议、或者某一个小方面的研究学习、亦或者是生活上的事情。写完就固定化下来了；wiki适合每一篇针对一个专题系统性的总结，比如读书笔记，某门语言或框架的学习。适合后续还会继续完善、补充和修改。我个人目前同时在维护自己的blog和wiki，一些blog上的问题也会以链接的方式或者直接复制到wiki上。所以我建议你也分开维护，会更简单一些。</li>
+<li><strong>使用VScode开发会导致乱码问题，无论如何都无法提交，所以推荐使用Sublime Text 3进行编写md文件。</strong></li>
+</ul>
+<h3 id="部署在服务器上"><a href="#部署在服务器上" class="headerlink" title="部署在服务器上"></a>部署在服务器上</h3><ul>
+<li>实现方法：使用的IIS的网站部署（之前学习的时候知道它可以用来部署局域网的网站，但是没想到原来服务器部署也是这样子的。我都没有理解到，更何况别的同学了，现代教育就是这样子的嘛？）<ul>
+<li><strong>第一步 安装IIS</strong>：首先是在阿里云的帮助文档中搜索如何在服务器上安装IIS，然后是照着<a href="https://help.aliyun.com/knowledge_detail/40918.html?spm=5176.11065259.1996646101.searchclickresult.5d5b7a2e3dpIcg" target="_blank" rel="noopener">这篇文章</a>新建一个站点，将我们的Simiki的文件夹添加进去即可。</li>
+<li><strong>第二步 实现公网访问网站：</strong> 添加进去之后我们使用的内网Ip和本地的Ip是可以访问项目了，但是却无法在我的电脑上访问到项目，然后是照着<a href="https://help.aliyun.com/knowledge_detail/40914.html?spm=5176.10695662.1996646101.searchclickresult.7f062b52Qum9rB" target="_blank" rel="noopener">这篇文章</a>进入安全组新建一组安全规则，之后我就可以通过公网Ip进行访问了。<ul>
+<li>参考文章<a href="https://blog.csdn.net/kairen6645/article/details/80590530" target="_blank" rel="noopener">：阿里云ECS IIS配置网站后，localhost以及内网能够访问，公网iP不能访问</a></li>
+</ul>
+</li>
+<li><strong>第三步 解决CSS文件不匹配的问题：仍然只能看到HTML文件，CSS文件并没有支持。</strong> 如何解决端口问题就可以解决网站静态文件不匹配的问题<ul>
+<li><del>一个原因是打开或关闭window功能中的Internert信息服务里的万维网服务=》常见HTTP功能=&gt;静态功能</del></li>
+<li><strong>第一次尝试：</strong>我首先使用的是 8080 端口，这个端口和Simiki的本地端口是一样的，这时候我是无论使用内网IP还是公网IP都可以在服务器上访问到没有问题的网站，但是在我的本地电脑上无论是公网IP还是内网IP都是无效的。于是我就参考了第二步觉得是公网IP没有访问权限的问题，我新建了一个安全组规则之后公网IP可以访问了，但是这里的首页是一个文件夹？我每个文件都点进去看了下，发现有些文件无法打开，因为使用了无法识别的一些语法，这里我在IIS里新建网站的时候的路径是<code>C:\Python\Simiki</code> ，于是我觉得不对劲，我开始了第二次尝试。</li>
+<li><strong>第二次尝试：</strong> 我这次看了太多的IIS文档了，然后就觉得还是 8080 端口的好一些，于是我又新建了一个网站，然后把这次新建网站的路径修改为存放静态文件的，就没有别的代码的纯洁路径了 <code>C:\Python\Simiki\output</code> ，然后我们重新在服务器上用内网和公网都测试了下终于静态文件全部都有了，该有的样子都挺好，但是我在本地电脑上是访问不到该网站的。于是我开始了第三次尝试。</li>
+<li><strong>第三次尝试：</strong> 我将端口好修改为默认的 80 ，然后我再次尝试发现本地电脑是可以访问成功的了，而且效果还不错。这个让我很难受，<strong>因为我根本不明白为什么端口会带来这么多的问题，而且也不明白为什么直接读取的静态文件夹之后IIS就会将首页展示出来呢？</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>参考文章：<ul>
+<li><a href="https://jingyan.baidu.com/album/86f4a73ea5bf6c37d6526932.html?picindex=2" target="_blank" rel="noopener">如何通过修改端口实现外网访问服务器本地项目</a></li>
+<li><a href="https://cloud.tencent.com/document/product/213/2755?from=10680" target="_blank" rel="noopener">如何配置服务器的IIS</a>——腾讯云</li>
+</ul>
+</li>
+<li>推荐文章：<ul>
+<li><a href="https://sthsf.github.io/wiki/" target="_blank" rel="noopener">将Wiki部署在github上，同步起来非常方便后续可以尝试下。</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里面 Simiki 相当于一个博客汇总系统，我需要将每篇文章写好之后进行一个上传和更新，然后它按照他的要求和格式进行一个排版，然后是使用 IIS 进行一个远程的访问。这样子的话其实之后的部署除非要使用到数据库交互的，否则如果只是静态页面的话完全可以使用 IIS 来部署，感觉是非常好的一个东西，比如我做一个可视化的Web 加到 SIMIKi 里面去一个超链接，然后把本地的CSS 和 JS修改一些符合我的效果，到最后的话也可以自己写一个脚本进行静态 HTML 文件的转化和创建因为这个东西都比较的简单，不像前端一样那么的复杂，这也可以算作是博客系统开发的另一个方向吧。</p>
+
+      </div>
+      <div class="post-copyright">
+    <p class="copyright-item">
+      <span>原文作者: </span>
+      <a href="http://afrunk.github.io">Afrunk</a>
+    </p>
+    <p class="copyright-item">
+      <span>原文链接: </span>
+      <a href="http://afrunk.github.io/2019/07/23/8-Simiki operates on documents/">http://afrunk.github.io/2019/07/23/8-Simiki operates on documents/</a>
+    </p>
+    <p class="copyright-item">
+      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
+    </p>
+  </div>
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Blog/">Blog</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2019/07/24/2-BIT-Python机器学习应用/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">BIT 《Python机器学习应用》</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2019/07/23/4-Hexo-Github-1/">
+        <span class="next-text nav-default">Hexo-Github</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2019 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Afrunk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
