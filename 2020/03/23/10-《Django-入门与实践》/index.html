@@ -124,7 +124,7 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#启动一个新项目"><span class="toc-text">启动一个新项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django-应用"><span class="toc-text">Django 应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启用-APP"><span class="toc-text">启用 APP</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-text">Hello World</span></a></li>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#启动一个新项目"><span class="toc-text">启动一个新项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django-应用"><span class="toc-text">Django 应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启用-APP"><span class="toc-text">启用 APP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World"><span class="toc-text">Hello World</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-text">View</span></a></li></ol></li></ol>
     </div>
   </div><div class="post-content"><p>本文是基于 [Python 之禅] 翻译的 <a href="https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/" target="_blank" rel="noopener">A Complete Beginner`s Guide to Django</a> 系列课程。环境支持是 <code>python3.7</code> 和 <code>Django 2.2.1</code> 。</p>
 <a id="more"></a>
@@ -160,26 +160,14 @@
 </ol>
 <h3 id="启用-APP"><a href="#启用-APP" class="headerlink" title="启用 APP"></a>启用 APP</h3><p>打开 Project 配置文件找到 <code>INSTALLED_APPS</code> 变量添加新建的 APP，建议将默认配置和新建 APP 空一行以显示区分。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">'django.contrib.admin'</span>,</span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sessions'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.staticfiles'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">'boards'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>现在让我们开始写第一个视图(view)，看看如何用 Django 创建一个新的页面。</p>
+<h2 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h2><h3 id="View"><a href="#View" class="headerlink" title="View"></a>View</h3><p>现在让我们开始写第一个视图(view)，看看如何用 Django 创建一个新的页面。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">boards/views.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'Hello,World!'</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>视图是接收 <code>Httprequest</code> 对象并返回一个 <code>Httpresponse</code> 对象的 Python 函数。接收 request 作为参数并返回 response 作为结果，这个流程你必须记住。</p>
 </blockquote>
 
       </div>
-      <div class="post-copyright">
-    <p class="copyright-item">
-      <span>原文作者: </span>
-      <a href="http://afrunk.github.io">Afrunk</a>
-    </p>
-    <p class="copyright-item">
-      <span>原文链接: </span>
-      <a href="http://afrunk.github.io/2020/03/23/10-《Django-入门与实践》/">http://afrunk.github.io/2020/03/23/10-《Django-入门与实践》/</a>
-    </p>
-    <p class="copyright-item">
-      <span>许可协议: </span><a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>
-    </p>
-  </div>
+      
       <footer class="post-footer">
         <div class="post-tags">
             <a href="/tags/Django/">Django</a>
