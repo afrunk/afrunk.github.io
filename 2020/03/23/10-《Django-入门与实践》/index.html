@@ -13,7 +13,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
-<meta name="description" content="《Django 入门与实践》学习笔记"><meta name="keywords" content="Django, afrunk"><link rel="alternate" href="/default" title="afrunk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<meta name="description" content="Django 入门与实践——如何使用 Django"><meta name="keywords" content="Django, afrunk"><link rel="alternate" href="/default" title="afrunk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
 <link rel="canonical" href="http://afrunk.github.io/2020/03/23/10-《Django-入门与实践》/">
 
 <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
@@ -40,7 +40,7 @@
   window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
 </script>
 
-    <title>《Django 入门与实践》学习笔记 - afrunk</title>
+    <title>Django 入门与实践——如何使用 Django - afrunk</title>
   </head>
 
   <body><div id="mobile-navbar" class="mobile-navbar">
@@ -109,7 +109,7 @@
         <div class="content-wrapper">
           <div id="content" class="content"><article class="post">
     <header class="post-header">
-      <h1 class="post-title">《Django 入门与实践》学习笔记
+      <h1 class="post-title">Django 入门与实践——如何使用 Django
         </h1>
 
       <div class="post-meta">
@@ -124,11 +124,11 @@
     <div class="post-toc" id="post-toc">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#A-启动一个新项目"><span class="toc-text">A 启动一个新项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#B-Django-应用"><span class="toc-text">B Django 应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#B1-启用-APP"><span class="toc-text">B1 启用 APP</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#C-Hello-World"><span class="toc-text">C Hello World</span></a></li>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#启动一个新项目"><span class="toc-text">启动一个新项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django-应用"><span class="toc-text">Django 应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#启用-APP"><span class="toc-text">启用 APP</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#Hello-World"><span class="toc-text">Hello World</span></a></li>
     </div>
   </div><div class="post-content"><p>本文是基于 [Python 之禅] 翻译的 <a href="https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/" target="_blank" rel="noopener">A Complete Beginner`s Guide to Django</a> 系列课程。环境支持是 <code>python3.7</code> 和 <code>Django 2.2.1</code> 。</p>
 <a id="more"></a>
-<h1 id="A-启动一个新项目"><a href="#A-启动一个新项目" class="headerlink" title="A 启动一个新项目"></a>A 启动一个新项目</h1><p>执行下面的命令来创建一个新的 Django 项目：<br><code>django-admin startproject myproject</code></p>
+<h1 id="启动一个新项目"><a href="#启动一个新项目" class="headerlink" title="启动一个新项目"></a>启动一个新项目</h1><p>执行下面的命令来创建一个新的 Django 项目：<br><code>django-admin startproject myproject</code></p>
 <p>命令行工具 django-admin 会在安装 Django 的时候一起自动安装好。执行上面的命令以后，系统会为 Django 项目生成基础文件夹结构，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">myproject/ &lt;-- ⾼级别的⽂件夹</span><br><span class="line">|-- myproject/ &lt;-- Django项⽬⽂件夹</span><br><span class="line">| |-- myproject/</span><br><span class="line">| | |-- __init__.py</span><br><span class="line">| | |-- settings.py</span><br><span class="line">| | |-- urls.py</span><br><span class="line">| | |-- wsgi.py</span><br><span class="line">| +-- manage.py</span><br></pre></td></tr></table></figure>
 <p>解释下这些文件的作用</p>
@@ -145,7 +145,7 @@
 <p>我们点击网址：<a href="http://127.0.0.1:8000/" target="_blank" rel="noopener">http://127.0.0.1:8000/</a> 即会看到 Django 项目</p>
 <p><img src="1.png" alt="第一个 django 项目"></p>
 <p>使用组合键 Ctrl + C 来终止开发服务器</p>
-<h1 id="B-Django-应用"><a href="#B-Django-应用" class="headerlink" title="B Django 应用"></a>B Django 应用</h1><p>我们应该明确 Project 是应用的父类，APP 是一个可以完成某件事情的 Web 应用程序，一个应用程序通常由一组 models(数据库表)、views(视图)、templates(模板)、tests(测试)组成。而 Project 是配置和应用程序的集合，一个项目可以由多个应用程序或一个应用程序组成。</p>
+<h1 id="Django-应用"><a href="#Django-应用" class="headerlink" title="Django 应用"></a>Django 应用</h1><p>我们应该明确 Project 是应用的父类，APP 是一个可以完成某件事情的 Web 应用程序，一个应用程序通常由一组 models(数据库表)、views(视图)、templates(模板)、tests(测试)组成。而 Project 是配置和应用程序的集合，一个项目可以由多个应用程序或一个应用程序组成。</p>
 <p>明白了 APP 和 Project 的关系之后，我们现在就要为 Project 创建一个 APP.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ (base) G:\《Django入门与实践》\myproject&gt;django-admin startapp boards</span><br><span class="line"><span class="comment"># 注意路径必须是和 manage.py 同一路径下</span></span><br></pre></td></tr></table></figure></p>
 <p>生成一个新的 APP 之后的树如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">myproject</span><br><span class="line">|-- db.sqlite3</span><br><span class="line">|-- manage.py</span><br><span class="line">|-- boards          &lt;- 新建APP</span><br><span class="line">|   |-- admin.py</span><br><span class="line">|   |-- apps.py</span><br><span class="line">|   |-- models.py</span><br><span class="line">|   |-- tests.py</span><br><span class="line">|   |-- views.py</span><br><span class="line">|   |-- __init__.py</span><br><span class="line">|   |-- migrations</span><br><span class="line">|   |   |-- __init__.py</span><br><span class="line">|-- myproject</span><br><span class="line">|   |-- settings.py</span><br><span class="line">|   |-- urls.py</span><br><span class="line">|   |-- wsgi.py</span><br><span class="line">|   |-- __init__.py</span><br><span class="line">|-- templates</span><br></pre></td></tr></table></figure>
@@ -158,9 +158,9 @@
 <li><code>tests.py</code> : 这个文件用来写当前应用程序的单元测试</li>
 <li><code>views.py</code> : 这是我们处理应用程序请求 (request)/响应(response)周期的文件</li>
 </ol>
-<h3 id="B1-启用-APP"><a href="#B1-启用-APP" class="headerlink" title="B1 启用 APP"></a>B1 启用 APP</h3><p>打开 Project 配置文件找到 <code>INSTALLED_APPS</code> 变量添加新建的 APP，建议将默认配置和新建 APP 空一行以显示区分。</p>
+<h3 id="启用-APP"><a href="#启用-APP" class="headerlink" title="启用 APP"></a>启用 APP</h3><p>打开 Project 配置文件找到 <code>INSTALLED_APPS</code> 变量添加新建的 APP，建议将默认配置和新建 APP 空一行以显示区分。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">INSTALLED_APPS = [</span><br><span class="line">    <span class="string">'django.contrib.admin'</span>,</span><br><span class="line">    <span class="string">'django.contrib.auth'</span>,</span><br><span class="line">    <span class="string">'django.contrib.contenttypes'</span>,</span><br><span class="line">    <span class="string">'django.contrib.sessions'</span>,</span><br><span class="line">    <span class="string">'django.contrib.messages'</span>,</span><br><span class="line">    <span class="string">'django.contrib.staticfiles'</span>,</span><br><span class="line"></span><br><span class="line">    <span class="string">'boards'</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-<h1 id="C-Hello-World"><a href="#C-Hello-World" class="headerlink" title="C Hello World"></a>C Hello World</h1><p>现在让我们开始写第一个视图(view)，看看如何用 Django 创建一个新的页面。</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><p>现在让我们开始写第一个视图(view)，看看如何用 Django 创建一个新的页面。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">boards/views.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'Hello,World!'</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>视图是接收 <code>Httprequest</code> 对象并返回一个 <code>Httpresponse</code> 对象的 Python 函数。接收 request 作为参数并返回 response 作为结果，这个流程你必须记住。</p>
