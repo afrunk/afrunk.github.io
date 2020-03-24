@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Django - render Or HttpResponse Or redirect"><meta name="keywords" content="Django, afrunk"><link rel="alternate" href="/default" title="afrunk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.io/2020/03/24/13-Django - render Or HttpResponse/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
+</script>
+
+    <title>Django - render Or HttpResponse Or redirect - afrunk</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">afrunk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/MachineLearning/">
+        <li class="mobile-menu-item">机器学习
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">afrunk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/MachineLearning/">
+            机器学习
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Django - render Or HttpResponse Or redirect
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-24
+        </span></div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#render"><span class="toc-text">render</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#必选参数"><span class="toc-text">必选参数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可选参数"><span class="toc-text">可选参数</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPResponse"><span class="toc-text">HTTPResponse</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#redirect"><span class="toc-text">redirect</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#render-js"><span class="toc-text">render - js</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusions"><span class="toc-text">Conclusions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>django.shortcuts 下的三大神器，render 函数、 HttpResponse 函数 和 redirect 函数的使用方法<br><a id="more"></a></p>
+<h1 id="render"><a href="#render" class="headerlink" title="render"></a>render</h1><p>在 Django 2.2 中，render() 被归属于 <a href="https://docs.djangoproject.com/zh-hans/2.2/topics/http/shortcuts/#django.shortcuts.render" target="_blank" rel="noopener">Django 快捷函数</a> 之一。引入方法为 <code>from django.shortcuts import render</code> <strong>本质其实是对 HTTPResponse 的调用，将数据填充到模板文件中，最后把结果返回给浏览器。</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">render</span><span class="params">(request, template_name, context=None, content_type=None, status=None, using=None)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Return a HttpResponse whose content is filled with the result of calling</span></span><br><span class="line"><span class="string">    django.template.loader.render_to_string() with the passed arguments.</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    content = loader.render_to_string(template_name, context, request, using=using)</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(content, content_type, status)</span><br></pre></td></tr></table></figure>
+<h2 id="必选参数"><a href="#必选参数" class="headerlink" title="必选参数"></a>必选参数</h2><ul>
+<li>request 用于生成此响应的请求对象</li>
+<li>template_name 要使用的模板的全名或模板名称的序列。如果给定一个序列，则将使用存在的第一个模板。</li>
+</ul>
+<h2 id="可选参数"><a href="#可选参数" class="headerlink" title="可选参数"></a>可选参数</h2><ul>
+<li>context 要添加到模板上下文的值的字典。默认情况下，这是一个空的字典，如果字典中的值是可调用的，则视图将在渲染模板之前调用它。</li>
+<li>content_type 生成的文档要使用的 MIME 类型</li>
+<li>status HTTP的响应代码，默认是200</li>
+<li>using 用于加载模板使用的模板引擎的名称</li>
+</ul>
+<p>示例<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_view</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># View code here...</span></span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'myapp/index.html'</span>, &#123;</span><br><span class="line">        <span class="string">'foo'</span>: <span class="string">'bar'</span>,</span><br><span class="line">    &#125;, content_type=<span class="string">'application/xhtml+xml'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>相当于 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="keyword">from</span> django.template <span class="keyword">import</span> loader</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">my_view</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># View code here...</span></span><br><span class="line">    t = loader.get_template(<span class="string">'myapp/index.html'</span>)</span><br><span class="line">    c = &#123;<span class="string">'foo'</span>: <span class="string">'bar'</span>&#125;</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(t.render(c, request), content_type=<span class="string">'application/xhtml+xml'</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="HTTPResponse"><a href="#HTTPResponse" class="headerlink" title="HTTPResponse"></a>HTTPResponse</h1><p>引入方法为 <code>from django.http import HttpResponse</code> <a href="https://docs.djangoproject.com/zh-hans/2.2/ref/request-response/#django.http.HttpResponse" target="_blank" rel="noopener">官方文档</a></p>
+<p>它的作用是内部传入一个字符串参数，然后发给浏览器。 我们可以参考 <a href="https://afrunk.github.io/2020/03/23/10-A%20Complete%20Beginner%60s%20Guide%20to%20Django%E2%80%94%E2%80%94What%20is%20Django/#Hello-World-MTV">A Complete Beginner`s Guide to Django——What is Django ?</a> 中 <code>Hello world</code> 的实现方法。</p>
+<p><strong>我们只需要配置好路由，然后在 Urls.py 中调用 views 的定义的函数，在函数中我们使用 HttpResponse 传递我们的参数。当我们在浏览器访问路由设置好的路径时，即会显示我们传递过去的参数。</strong></p>
+<h1 id="redirect"><a href="#redirect" class="headerlink" title="redirect"></a>redirect</h1><p>重定向 接受一个 URL 参数，表示让浏览器跳转去指定的 URL<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></span><br><span class="line">    <span class="comment"># 业务逻辑代码</span></span><br><span class="line">    <span class="keyword">return</span> redirect(<span class="string">"https://blog.csdn.net/miaoqinian"</span>)</span><br></pre></td></tr></table></figure></p>
+<h1 id="render-js"><a href="#render-js" class="headerlink" title="render - js"></a>render - js</h1><p>如果数据不是传给 HTML 而是传递 JS 用，那么按照上文的方式写会有错误。需要注意两点</p>
+<ul>
+<li>views.py 中返回的函数中的值要用 json.dumps() 处理，用于将 dict 类型的数据转成 str</li>
+<li>需要掌握如何在 HTML 调用 JS 函数中的数据</li>
+</ul>
+<p>具体的实现代码如下，主要涉及 </p>
+<ul>
+<li>路由 将访问的链接和视图函数绑定起来 在访问该网址时调用函数传递参数给HTML 然后在浏览器展示</li>
+<li>视图函数 将数据封装成 JSON 格式 方便 HTML 的 JS 处理</li>
+<li>Teamplates HTML调用 JS 函数的数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">myproject/urls.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"><span class="comment"># 从 boards APP 中导入 views</span></span><br><span class="line"><span class="keyword">from</span> boards <span class="keyword">import</span> views</span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    path(<span class="string">'jsrender'</span>,views.jsrender,name=<span class="string">'ajaxrender'</span>) <span class="comment"># render传递json参数至前端js HTML调用js函数</span></span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">boards/views.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">jsrender</span><span class="params">(request)</span>:</span></span><br><span class="line">    list = [<span class="string">'HTML'</span>,<span class="string">'Python'</span>, <span class="string">'Json'</span>, <span class="string">'JS'</span>]</span><br><span class="line">    <span class="keyword">return</span> render(request, <span class="string">'jsRender.html'</span>, &#123;</span><br><span class="line">        <span class="string">'List'</span>: json.dumps(list),</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">templates/jsRender.html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;p id="demo"&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">    var List = &#123;&#123; List|safe &#125;&#125;</span><br><span class="line">function demo() &#123;</span><br><span class="line">    <span class="keyword">return</span> List</span><br><span class="line">&#125;</span><br><span class="line">document.getElementById(<span class="string">"demo"</span>).innerHTML = demo();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h1><p>本文主要分五部分</p>
+<ul>
+<li>render() 传递参数到 HTML 并将最后的结果传给浏览器</li>
+<li>HTTPResponse() 直接传递参数给浏览器</li>
+<li>redirect() 重定向</li>
+<li>render 传递数据给 JS,HTML 调用 JS 函数获取数据</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href="https://blog.csdn.net/miaoqinian/article/details/80668003" target="_blank" rel="noopener">Django 基础必备三神装</a></li>
+<li><a href="https://blog.csdn.net/XTY00/article/details/88193695" target="_blank" rel="noopener">Django 前后台的数据传递 render与HTTPResponse 动态加载的区别</a></li>
+<li><a href="https://blog.csdn.net/weixin_41946792/article/details/79798953" target="_blank" rel="noopener">如何在 HTML 中调用 js 函数</a></li>
+<li><a href="https://code.ziqiangxuetang.com/django/django-ajax.html" target="_blank" rel="noopener">自强学院 ajax 动态刷新教程</a></li>
+</ul>
+
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/2020/03/23/12-A Complete Beginner`s Guide to Django -- Other`s Fundamentals/">
+        <span class="next-text nav-default">A Complete Beginner`s Guide to Django -- Other parts of principle</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2019 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Afrunk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>

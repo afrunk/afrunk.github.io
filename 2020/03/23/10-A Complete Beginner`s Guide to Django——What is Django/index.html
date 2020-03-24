@@ -127,7 +127,7 @@
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Start-a-New-Project"><span class="toc-text">Start a New Project</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Django-APPs"><span class="toc-text">Django APPs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RUN-APP"><span class="toc-text">RUN APP</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hello-World-MTV"><span class="toc-text">Hello World -MTV</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Urls"><span class="toc-text">Urls</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#View"><span class="toc-text">View</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Conclusions"><span class="toc-text">Conclusions</span></a></li></ol>
     </div>
   </div><div class="post-content"><p>本文是基于 Python 之禅 翻译的 <a href="https://simpleisbetterthancomplex.com/series/beginners-guide/1.11/" target="_blank" rel="noopener">A Complete Beginner`s Guide to Django</a> 系列课程。环境支持是 <code>python3.7</code> 和 <code>Django 2.2.1</code> 。</p>
-<a id="more"></a>
+<p>本文主要讲述了 Django 的工作流程和 MTV 模型的具体含义。<br><a id="more"></a></p>
 <h1 id="Start-a-New-Project"><a href="#Start-a-New-Project" class="headerlink" title="Start a New Project"></a>Start a New Project</h1><p>执行下面的命令来创建一个新的 Django 项目：<br><code>django-admin startproject myproject</code></p>
 <p>命令行工具 django-admin 会在安装 Django 的时候一起自动安装好。执行上面的命令以后，系统会为 Django 项目生成基础文件夹结构，如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">myproject/ &lt;-- ⾼级别的⽂件夹</span><br><span class="line">|-- myproject/ &lt;-- Django项⽬⽂件夹</span><br><span class="line">| |-- myproject/</span><br><span class="line">| | |-- __init__.py</span><br><span class="line">| | |-- settings.py</span><br><span class="line">| | |-- urls.py</span><br><span class="line">| | |-- wsgi.py</span><br><span class="line">| +-- manage.py</span><br></pre></td></tr></table></figure>
@@ -200,7 +200,7 @@
         
         <nav class="post-nav"><a class="prev" href="/2020/03/23/11-A-Complete-Beginner-s-Guide-to-Django/">
         <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">A Complete Beginner`s Guide to Django -- Fundamentals(Models)</span>
+        <span class="prev-text nav-default">A Complete Beginner`s Guide to Django -- Models Fundamentals</span>
         <span class="prev-text nav-mobile">上一篇</span>
       </a>
     <a class="next" href="/2020/03/22/9-Django-注册登录功能/">

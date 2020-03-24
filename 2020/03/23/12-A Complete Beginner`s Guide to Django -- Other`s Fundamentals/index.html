@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="A Complete Beginner`s Guide to Django -- Other parts of principle"><meta name="keywords" content="Django, afrunk"><link rel="alternate" href="/default" title="afrunk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.io/2020/03/23/12-A Complete Beginner`s Guide to Django -- Other`s Fundamentals/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
+</script>
+
+    <title>A Complete Beginner`s Guide to Django -- Other parts of principle - afrunk</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">afrunk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/MachineLearning/">
+        <li class="mobile-menu-item">机器学习
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">afrunk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/MachineLearning/">
+            机器学习
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">A Complete Beginner`s Guide to Django -- Other parts of principle
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-03-23
+        </span><span class="post-category">
+            <a href="/categories/Django-Tutorial/">Django Tutorial</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View"><span class="toc-text">View</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Teamplates"><span class="toc-text">Teamplates</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Static-Files-Setup"><span class="toc-text">Static Files Setup</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Admin"><span class="toc-text">Admin</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusions"><span class="toc-text">Conclusions</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>上一节详细讲解了 Models 的来源、构建、用法，这是 Fundamentals 的第二部分，讲述 Views、Templates  and Admin 。<br><a id="more"></a></p>
+<h1 id="View"><a href="#View" class="headerlink" title="View"></a>View</h1><p>在第一篇教程中我们已经有了一个视图，这个视图在我们的应用程序主页显示如下</p>
+<p><img src="1.png" alt><br>路由实现代码如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">myproject/urls.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> django.urls <span class="keyword">import</span> path</span><br><span class="line"></span><br><span class="line"><span class="comment"># 从 boards APP 中导入 views</span></span><br><span class="line"><span class="keyword">from</span> boards <span class="keyword">import</span> views</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</span><br><span class="line">    <span class="comment"># 调用views.home</span></span><br><span class="line">    path(<span class="string">'home'</span>,views.home,name=<span class="string">'home'</span>),</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>视图实现代码如下<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">boards/views.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 导入 HttpResponse 对象 由 DJango 自动创建</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="comment"># 导入时间模块</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">    now = datetime.datetime.now()</span><br><span class="line">    html = <span class="string">"&lt;html&gt;&lt;body&gt; &lt;h1&gt;Hello,World!&lt;/h1&gt;  It is now %s.&lt;/body&gt;&lt;/html&gt;"</span> % now</span><br><span class="line">    <span class="keyword">return</span> HttpResponse(html)</span><br></pre></td></tr></table></figure></p>
+<p>但是这并不是我们的最终效果，如果你想起来在第二篇文章中的 Wirdframe ，它就是我们需要完成的首页效果图。<br><img src="2.png" alt></p>
+<p>因为路由我们已经配置好了，现在需要做的就是如何将我们的所有主题都拼接成 HTML 结构然后传递给前端即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 导入 HttpResponse 对象 由 DJango 自动创建</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="comment"># 导入时间模块</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment"># 导入 Board 为数据调用做准备</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Board</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="comment"># 首页的视图函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">    boards = Board.objects.all()<span class="comment"># 从数据库中读取 board 表内的数据</span></span><br><span class="line">    boards_name = list()<span class="comment"># 构建存储主题名的 列表</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> board <span class="keyword">in</span> boards:</span><br><span class="line">        boards_name.append(board.name)</span><br><span class="line"></span><br><span class="line">    response_html = <span class="string">'&lt;br&gt;'</span>.join(boards_name)<span class="comment"># 拼接成HTML格式</span></span><br><span class="line">    <span class="keyword">return</span> HttpResponse(response_html) <span class="comment"># 将查询到的数据传递给前端页面展示</span></span><br></pre></td></tr></table></figure>
+<p>这是非常重要的一个开始，<strong>如何将数据库的数据读取出来在前端页面上进行展示</strong>。因为后续的其他操作都是对这个过程的不断重复</p>
+<ol>
+<li>Teamplate 部分：美化前端页面，让读取出来的数据可以嵌入到更美观的 HTML</li>
+<li>View 部分：如何构建更加符合需求的 Mysql 语句让查询到的数据更方便的进行展示</li>
+<li>Models 部分： 如何构建外键，让其对前端的操作可以及时的记录反馈并存储到数据库中</li>
+</ol>
+<p><img src="3.png" alt></p>
+<p>当然，我们在真正的项目里是不会去这样子渲染 HTML。因为我们在 MTV 模型中就提到了我们非常重要的一部分 Teamplates ，其作用就是将 View 函数中传递过去的数据使用 Django 的语法进行渲染，在 HTML 中展示出来。</p>
+<h1 id="Teamplates"><a href="#Teamplates" class="headerlink" title="Teamplates"></a>Teamplates</h1><p>在与 boards 同目录下的 templates 下创建名为 <code>home.html</code> 的 HTML 文件。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">templates\home.html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=<span class="string">"en"</span>&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Boards&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Boards&lt;/h1&gt;</span><br><span class="line">    &#123;% <span class="keyword">for</span> board <span class="keyword">in</span> boards %&#125;</span><br><span class="line">        &#123;&#123; board.name &#125;&#125; &lt;br&gt;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>我们仔细查看下这部分的代码,我们混入了原始 HTML 和一些特殊标签 <code>{% for ... in ... %}</code> 和  。它们是 Django 模板语言的一部分。上面的例子展示了如何使用 for 遍历列表对象。 会在 HTML 模板中会被渲染成版块的名称，最后生成动态 HTML 文档。</p>
+<p>而在 Views.py 中，我们是才有先从数据库读取数据，然后遍历添加到列表，最后通过 HTTPResponse 直接传递到前端。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% <span class="keyword">for</span> board <span class="keyword">in</span> boards %&#125;</span><br><span class="line">    &#123;&#123; board.name &#125;&#125; &lt;br&gt;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+<p>好的，了解了如何在 HTML 插入数据了，现在我们需要返回上一步编辑我们的 View 函数，将传入的数据进行修改。这里我们改变了之前的写法，调用了一个新的函数 <code>render</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">boards/views.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> render</span><br><span class="line"><span class="comment"># 导入 HttpResponse 对象 由 DJango 自动创建</span></span><br><span class="line"><span class="keyword">from</span> django.http <span class="keyword">import</span> HttpResponse</span><br><span class="line"><span class="comment"># 导入时间模块</span></span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="comment"># 导入 Board 为数据调用做准备</span></span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Board</span><br><span class="line"></span><br><span class="line"><span class="comment"># Create your views here.</span></span><br><span class="line"><span class="comment"># 首页的视图函数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">home</span><span class="params">(request)</span>:</span></span><br><span class="line">    boards = Board.objects.all()<span class="comment"># 从数据库中读取 board 表内的数据</span></span><br><span class="line">    <span class="keyword">return</span> render(request,<span class="string">'home.html'</span>,&#123;<span class="string">'boards'</span>:boards&#125;)</span><br></pre></td></tr></table></figure>
+<p>下面就是我们的首页的效果</p>
+<p><img src="4.png" alt></p>
+<p>这个页面的效果不是很好看 ，所以我们来改进下 HTML 的布局</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">templates/home.html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;Boards&lt;/title&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;Boards&lt;/h1&gt;</span><br><span class="line">        &lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;Board&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;Posts&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;Topics&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;Last Post&lt;/th&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            &#123;% <span class="keyword">for</span> board <span class="keyword">in</span> boards %&#125;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;</span><br><span class="line">                &#123;&#123; board.name &#125;&#125;&lt;br&gt;</span><br><span class="line">                &lt;small style="color: #888"&gt;&#123;&#123; board.description &#125;&#125;&lt;/small&gt;</span><br><span class="line">                &lt;/td&gt;</span><br><span class="line">                &lt;td&gt;0&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;0&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;&lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        &lt;/tbody&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p><img src="5.png" alt></p>
+<p>看起来距离我们的最终效果不远了。</p>
+<h1 id="Static-Files-Setup"><a href="#Static-Files-Setup" class="headerlink" title="Static Files Setup"></a>Static Files Setup</h1><p>静态文件是指 CSS,JavaScript,字体，图片或者是用来组成用户界面的任何其他资源。Django 提供了一些功能来帮助我们管理静态文件。这些功能可在 INSTALLED_APPS 的 django.contrib.staticfiles 应用程序中找到。</p>
+<p>市面上很多优秀前端组件框架，我们都可以拿来使用渲染我们的 HTML 文件。在项目的根目录下创建一个 static 的新文件夹，转到 <a href="https://getbootstrap.com/docs/4.0/getting-started/download/#compiled-css-and-js" target="_blank" rel="noopener">getbootstaro.com</a> 下载框架文件，并将其放在 static 文件夹下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">|-- myproject/</span><br><span class="line">| |-- boards/</span><br><span class="line">| |-- myproject/</span><br><span class="line">| |-- templates/</span><br><span class="line">| |-- static/</span><br><span class="line">| | +-- css/</span><br><span class="line">| |     +-- bootstrap.min.css</span><br></pre></td></tr></table></figure></p>
+<p>下一步是告诉 Django 在哪里可以找到静态文件。打开设置文件，拉到文件的地步，在 STATIC_URL 后面添加一下内容<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">myproject/settings.py</span><br><span class="line"></span><br><span class="line">STATIC_URL = <span class="string">'/static/'</span></span><br><span class="line">STATICFILES_DIRS =[</span><br><span class="line">    os.path.join(BASE_DIR,<span class="string">'static'</span>)</span><br><span class="line">]</span><br></pre></td></tr></table></figure></p>
+<p>现在我们必须在 HTMl 文件中加载静态文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">templates/home.html</span><br><span class="line"></span><br><span class="line">&#123;% load static %&#125;</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Boards&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &apos;css/bootstrap-grid.css&apos; %&#125;&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &apos;css/bootstrap.css&apos; %&#125;&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &apos;css/bootstrap-reboot.css&apos; %&#125;&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">    &lt;body&gt;</span><br><span class="line">        &lt;h1&gt;Boards&lt;/h1&gt;</span><br><span class="line">        &lt;table border=&quot;1&quot;&gt;</span><br><span class="line">        &lt;thead&gt;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">            &lt;th&gt;Board&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;Posts&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;Topics&lt;/th&gt;</span><br><span class="line">            &lt;th&gt;Last Post&lt;/th&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">        &lt;/thead&gt;</span><br><span class="line">        &lt;tbody&gt;</span><br><span class="line">            &#123;% for board in boards %&#125;</span><br><span class="line">            &lt;tr&gt;</span><br><span class="line">                &lt;td&gt;</span><br><span class="line">                &#123;&#123; board.name &#125;&#125;&lt;br&gt;</span><br><span class="line">                &lt;small style=&quot;color: #888&quot;&gt;&#123;&#123; board.description &#125;&#125;&lt;/small&gt;</span><br><span class="line">                &lt;/td&gt;</span><br><span class="line">                &lt;td&gt;0&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;0&lt;/td&gt;</span><br><span class="line">                &lt;td&gt;&lt;/td&gt;</span><br><span class="line">            &lt;/tr&gt;</span><br><span class="line">            &#123;% endfor %&#125;</span><br><span class="line">        &lt;/tbody&gt;</span><br><span class="line">        &lt;/table&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>首先，我们在模板的开头使用了 Static Files APP 模板标签 {% load static%} 。模板标签 {% static %} 用于构成资源文件完整 URL。在这种情况下， {% static 'css/bootstrap-grid.css' %} 将返回 <strong>/static/css/bootstrap-grid.css</strong> 相当于 <a href="http://127.0.0.1:8000/static/css/bootstrap-grid.css。" target="_blank" rel="noopener">http://127.0.0.1:8000/static/css/bootstrap-grid.css。</a></p>
+ {% static %}模板标签使⽤ settings.py⽂件中的 STATIC_URL 配置来组成最终的URL，例如，如果您将静态⽂件托管在像 https://static.example.com/ 这样的⼦域中 ，那么我们将设置 STATIC_URL= https://static.example.com/ ，然后  {% static 'css/bootstrap.min.css' %} 返回的是 https://static.example.com/css/bootstrap.min.css。
+
+现在我们需要编辑 HTML，以利用 Bootstrap CSS
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load static %&#125;</span><br><span class="line">templates/home.html</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">    &lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Boards&lt;/title&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &apos;css/bootstrap-grid.css&apos; %&#125;&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &apos;css/bootstrap.css&apos; %&#125;&quot;&gt;</span><br><span class="line">    &lt;link rel=&quot;stylesheet&quot; href=&quot;&#123;% static &apos;css/bootstrap-reboot.css&apos; %&#125;&quot;&gt;</span><br><span class="line">    &lt;/head&gt;</span><br><span class="line">   &lt;body&gt;</span><br><span class="line">        &lt;div class=&quot;container&quot;&gt;</span><br><span class="line">            &lt;ol class=&quot;breadcrumb my-4&quot;&gt;</span><br><span class="line">                &lt;li class=&quot;breadcrumb-item active&quot;&gt;Boards&lt;/li&gt;</span><br><span class="line">            &lt;/ol&gt;</span><br><span class="line">            &lt;table class=&quot;table&quot;&gt;</span><br><span class="line">                &lt;thead class=&quot;thead-inverse&quot;&gt;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;th&gt;Board&lt;/th&gt;</span><br><span class="line">                        &lt;th&gt;Posts&lt;/th&gt;</span><br><span class="line">                        &lt;th&gt;Topics&lt;/th&gt;</span><br><span class="line">                        &lt;th&gt;Last Post&lt;/th&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &lt;/thead&gt;</span><br><span class="line">                &lt;tbody&gt;</span><br><span class="line">                &#123;% for board in boards %&#125;</span><br><span class="line">                    &lt;tr&gt;</span><br><span class="line">                        &lt;td&gt;</span><br><span class="line">                            &#123;&#123; board.name &#125;&#125;</span><br><span class="line">                            &lt;small class=&quot;text-muted d-block&quot;&gt;&#123;&#123; board.description &#125;&#125;&lt;/small&gt;</span><br><span class="line">                        &lt;/td&gt;</span><br><span class="line">                        &lt;td class=&quot;align-middle&quot;&gt;0&lt;/td&gt;</span><br><span class="line">                        &lt;td class=&quot;align-middle&quot;&gt;0&lt;/td&gt;</span><br><span class="line">                        &lt;td&gt;&lt;/td&gt;</span><br><span class="line">                    &lt;/tr&gt;</span><br><span class="line">                &#123;% endfor %&#125;</span><br><span class="line">                &lt;/tbody&gt;</span><br><span class="line">            &lt;/table&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">    &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>这里不对使用 Bootstrap 的方法进行深究，如果可以的话会有专门针对 Bootstrap 的教程。 </p>
+<p><img src="6.png" alt></p>
+<h1 id="Admin"><a href="#Admin" class="headerlink" title="Admin"></a>Admin</h1><p>现在，我们使用 Python manage.py shell 添加用户模块。</p>
+<p>当我们开始一个新项目时，Django 已经配置了 Django Admin ，我们可以在 settings.py 的INSTALLED_APPS查找到对于的 APP。使用 DJango Admin 的一个很好的例子就是用在博客中；它可以被作者用来编写和发布文章。另一个例子是电子商务网站，工作人员可以创建，编辑，删除产品。现在我们将配置 Django Admin 来维护我们应用程序的版块。</p>
+<p>我们首先创建一个管理员账户：<code>python manage.py createsuperuser</code> 。按照说明操作<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(base)myproject&gt;python manage.py createsuperuser</span><br><span class="line">用户名 (leave blank to use <span class="string">'afrunk'</span>): admin</span><br><span class="line">电子邮件地址: admin@example.com</span><br><span class="line">Password:</span><br><span class="line">Password (again):</span><br><span class="line">Superuser created successfully.</span><br></pre></td></tr></table></figure></p>
+<p>创建完成之后我们可以在浏览器打开该 URL : <a href="http://127.0.0.1:8000/admin/" target="_blank" rel="noopener">用户登录</a></p>
+<p><img src="7.png" alt></p>
+<p>输入用户名和密码登录到管理界面</p>
+<p><img src="8.png" alt></p>
+<p>它已经配置了一些功能，在这里我们可以添加用户和组的权限管理，这些概念在后面我们将讨论更多。<br>为了能够将用户和我们的功能都联系起来，我们需要在 Board 的 admin.py 文件下添加一下代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">boards/admin.py</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> django.contrib <span class="keyword">import</span> admin</span><br><span class="line"><span class="keyword">from</span> .models <span class="keyword">import</span> Board</span><br><span class="line"><span class="comment"># Register your models here.</span></span><br><span class="line">admin.site.register(Board)</span><br></pre></td></tr></table></figure>
+<p>保存 admin.py 文件，然后刷新网页浏览器的页面，可以观察到 Boards 的模型已经被添加进来</p>
+<p><img src="9.png" alt></p>
+<p>点击 Boards 链接查看现有主题列表，这些主题是我们之前教程中操作插入数据库的信息</p>
+<p><img src="10.png" alt></p>
+<p>我们可以通过点击添加 Board 按钮添加一个新的板块：</p>
+<p><img src="11.png" alt></p>
+<p>点击保存按钮</p>
+<p><img src="12.png" alt></p>
+<p>返回首页查看是否一切正常</p>
+<p><img src="13.png" alt></p>
+<h1 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h1><ul>
+<li><strong>Views</strong> 方面讲述了如何通过 QuerySet 的方法获取数据库的数据，然后通过 render() 传递到 HTML 文件中</li>
+<li><strong>Teamplates</strong> 如何将 Views 中传过来的数据在 HTMl 中进行使用</li>
+<li><strong>Static Files Setup</strong> 使用第三方框架来渲染我们的 HTML 文件，具体的引入和文件配置都讲的非常的明确，遗憾是没有讲 Bootstrap 的具体操作方法</li>
+</ul>
+<p>该文承接上文是 Django  Fundamentals 的讲解部分，上一篇文章主要讲解了 Models 的基本原理，本文讲解了 Views 、 Templates and Admin 的具体操作方法，Django 入门的非常好的读物。</p>
+
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Django/">Django</a>
+            </div>
+        
+        <nav class="post-nav"><a class="prev" href="/2020/03/24/13-Django - render Or HttpResponse/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">Django - render Or HttpResponse Or redirect</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2020/03/23/11-A-Complete-Beginner-s-Guide-to-Django/">
+        <span class="next-text nav-default">A Complete Beginner`s Guide to Django -- Models Fundamentals</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2019 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Afrunk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
