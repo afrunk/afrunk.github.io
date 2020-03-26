@@ -126,8 +126,7 @@
     <div class="post-toc-content">
       <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#线框图"><span class="toc-text">线框图</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#初始设置"><span class="toc-text">初始设置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注册"><span class="toc-text">注册</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#复用表单模板"><span class="toc-text">复用表单模板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#验证是否登录"><span class="toc-text">验证是否登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拓展-User-字段"><span class="toc-text">拓展 User 字段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#改进注册模板"><span class="toc-text">改进注册模板</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Logout"><span class="toc-text">Logout</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Login"><span class="toc-text">Login</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#重置密码"><span class="toc-text">重置密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#修改密码"><span class="toc-text">修改密码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Conclusions"><span class="toc-text">Conclusions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
     </div>
-  </div><div class="post-content"><p>这一章节将会全面介绍 Django 的身份认证系统，我们将实现注册、登录、注销、密码重置和密码修改的整套流程。同时你还会了解到如何避免未授权用户的访问，以及如何访问已登录用户的个人信息。</p>
-<a id="more"></a>
+  </div><div class="post-content"><p>这一章节将会全面介绍 Django 的身份认证系统，我们将实现注册、登录、注销、密码重置和密码修改的整套流程。<br><a id="more"></a></p>
 <p>在接下来的部分，你会看到一些和身份验证有关线框图。之后是一个全新 Django 应用的初始化设置。至今为止我们一直在一个名为 boards 的应用中开发。不过，所有身份认证相关的内容都将在另一个应用中，这样能更好的组织代码。</p>
 <h1 id="线框图"><a href="#线框图" class="headerlink" title="线框图"></a>线框图</h1><p>我们必须更新一下应用的线框图，首先，我们需要在顶部菜单添加一些新选项，如果用户未通过身份验证，应该有两个按钮：分别是注册和登录按钮。</p>
 <p><img src="1.png" alt></p>
@@ -219,7 +218,7 @@
 <li><strong>password_reset_confirm.html</strong> 重置密码的页面</li>
 <li><strong>password_reset_complete.html</strong> 重置成功的页面</li>
 </ul>
-<p>按照 <a href>Github 项目</a> 找到静态文本将内容补齐即可。</p>
+<p>按照 <a href="https://github.com/afrunk/A-Complete-Beginner-s-Guide-to-Django/tree/auth/templates" target="_blank" rel="noopener">Github托管的 HTML 模板</a>找到静态文本将内容补齐即可。</p>
 <p>修改 <code>templates/login.html</code> 下的 Forget your password 指向的链接</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">templates/login.html</span><br><span class="line"> &lt;a href="&#123;% url 'password_reset' %&#125;" class="text-muted"&gt;Forgot your password?&lt;/a&gt;</span><br></pre></td></tr></table></figure>
 <p>点击忘记密码，直接跳转如下页面</p>
@@ -239,7 +238,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 其他路由配置</span><br><span class="line">path(r&apos;settings/password/&apos;, auth_views.PasswordChangeView.as_view(template_name=&apos;password_change.html&apos;),</span><br><span class="line">        name=&apos;password_change&apos;),</span><br><span class="line">path(r&apos;settings/password/done/&apos;, auth_views.PasswordChangeDoneView.as_view(template_name=&apos;password_change_done.html&apos;),</span><br><span class="line">    name=&apos;password_change_done&apos;),</span><br></pre></td></tr></table></figure>
 <p>这些视图仅适合登录用户，他们使用名为 <code>@login_required</code> 的装饰器，此装饰器可防止非授权用户访问此页面。如果用户没有登录，将重定向到登录页面。<br>现在我们需要在 settings.py 中定义我们应用程序的登录 URL</p>
 <p><code>LOGIN_URL = &#39;login&#39;</code></p>
-<p>然后是修改密码和修改成功的模板页面修改，参考 <a href>Github托管的 HTML 模板</a> 补齐即可。</p>
+<p>然后是修改密码和修改成功的模板页面修改，参考 <a href="https://github.com/afrunk/A-Complete-Beginner-s-Guide-to-Django/tree/auth/templates" target="_blank" rel="noopener">Github托管的 HTML 模板</a> 补齐即可。</p>
 <p><img src="16.png" alt><br><img src="17.png" alt></p>
 <h1 id="Conclusions"><a href="#Conclusions" class="headerlink" title="Conclusions"></a>Conclusions</h1><p>内容这么多主要是引入第三方框架优化布局，本章节最强的地方主要复用表单模板，这个模板在 Django 中应该是大小通吃的。<br>其次是有关身份验证的重要视图基本上都实现了：注册、登录、注销和更改密码。印象深刻的直接在 base.html 中引用  即可获取用户名，真的是奇妙。</p>
 <p>重置密码的模块全部都是调用的内置模块，但是也需要自行配置发件箱，难度其实很小，但是不捉摸的话其实也不是那么容易实现。<br>只有自己的不断去尝试、实践才能得到一些真正的知识。</p>
@@ -255,7 +254,12 @@
             <a href="/tags/Django/">Django</a>
             </div>
         
-        <nav class="post-nav"><a class="next" href="/2020/03/24/14-A Complete Beginner`s Guide to Django -- Advanced Concepts/">
+        <nav class="post-nav"><a class="prev" href="/2020/03/26/16-A Complete Beginner`s Guide to Django -- Reply list And QuerySet/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">A Complete Beginner`s Guide to Django -- Reply list And QuerySet</span>
+        <span class="prev-text nav-mobile">上一篇</span>
+      </a>
+    <a class="next" href="/2020/03/24/14-A Complete Beginner`s Guide to Django -- Advanced Concepts/">
         <span class="next-text nav-default">A Complete Beginner`s Guide to Django -- Advanced Concepts</span>
         <span class="prev-text nav-mobile">下一篇</span>
         <i class="iconfont icon-right"></i>
