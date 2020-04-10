@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang>
+  <head><meta name="generator" content="Hexo 3.9.0"><meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+<meta name="theme-color" content="#f8f5ec">
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="description" content="Mysql Crash Course"><meta name="keywords" content="Mysql, afrunk"><link rel="alternate" href="/default" title="afrunk"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=2.11.0">
+<link rel="canonical" href="http://afrunk.github.io/2020/04/10/20-Mysql-Crash-Course/">
+
+<link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css"><link rel="stylesheet" type="text/css" href="/lib/nprogress/nprogress.min.css"><script type="text/x-mathjax-config">
+    MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+  </script>
+  <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=2.11.0">
+
+<script id="baidu_push">
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>
+  window.config = {"leancloud":{"app_id":null,"app_key":null},"toc":true,"fancybox":true,"pjax":true,"latex":true};
+</script>
+
+    <title>Mysql Crash Course - afrunk</title>
+  </head>
+
+  <body><div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/." class="logo">afrunk</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list"><a href="/">
+        <li class="mobile-menu-item">Home
+          </li>
+      </a><a href="/archives/">
+        <li class="mobile-menu-item">Archivew
+          </li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags
+          </li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories
+          </li>
+      </a><a href="/MachineLearning/">
+        <li class="mobile-menu-item">机器学习
+          </li>
+      </a></ul>
+</nav>
+<div class="container" id="mobile-panel">
+      <header id="header" class="header"><div class="logo-wrapper">
+  <a href="/." class="logo">afrunk</a>
+</div>
+
+<nav class="site-navbar"><ul id="menu" class="menu"><li class="menu-item">
+          <a class="menu-item-link" href="/">
+            Home
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/archives/">
+            Archivew
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/tags/">
+            Tags
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/categories/">
+            Categories
+            </a>
+        </li>
+      <li class="menu-item">
+          <a class="menu-item-link" href="/MachineLearning/">
+            机器学习
+            </a>
+        </li>
+      </ul></nav>
+</header>
+
+      <main id="main" class="main">
+        <div class="content-wrapper">
+          <div id="content" class="content"><article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Mysql Crash Course
+        </h1>
+
+      <div class="post-meta">
+        <span class="post-time">
+          2020-04-10
+        </span><span class="post-category">
+            <a href="/categories/而已/">而已</a>
+            </span>
+        </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Basic-Terminology"><span class="toc-text">Basic Terminology</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#No-1-Sample"><span class="toc-text">No.1 Sample</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Start"><span class="toc-text">Start</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-DB"><span class="toc-text">Create DB</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-Table"><span class="toc-text">Create Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DELETE-Table"><span class="toc-text">DELETE Table</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UPDATE-Table"><span class="toc-text">UPDATE Table</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Reference"><span class="toc-text">Reference</span></a></li></ol>
+    </div>
+  </div><div class="post-content"><p>本文介绍下 MySQL 关系数据库管理（RDBMS) 及其所采用的的结构化查询语言（SQL) 。</p>
+<p><strong>数据库</strong> 本质上是一种用来管理信息列表的手段。这些信息可来自不同的地方。例如，它可以代表研究数据、业务记录、顾客请求、运动数据统计、销售报告、个人爱好信息、人事记录、问题报告或学生成绩等。数据库系统只在 <em>组织和管理的信息很庞大或很复杂 ，用手工处理极其繁重时才能显示出来。</em> </p>
+<p>本教程默认你有安装 MySQL 的能力。<br><a id="more"></a></p>
+<h1 id="Basic-Terminology"><a href="#Basic-Terminology" class="headerlink" title="Basic Terminology"></a>Basic Terminology</h1><ul>
+<li>数据库（RDBMS-DB）是存储信息的仓库，以一种简单的、规则的方式进行组织<ol>
+<li>数据库中的数据集组织为表</li>
+<li>每个表由行和列组成</li>
+<li>表中每行为一个记录</li>
+<li>记录可包含几段信息；表中每一列对应这些信息中的一段。</li>
+</ol>
+</li>
+<li>MS 管理系统是允许插入、检索、修改和删除记录来使用数据的软件</li>
+<li>R 关系表示一种特殊种类的 DBMS ，它通过寻找相互之间的共同元素使存放在一个表中的信息关联到存放在另一个表中的信息。</li>
+</ul>
+<p><strong>这里有一个例子，示出了关系数据库怎样将数据组织成表并将一个表中的信息与另一个表中的信息相关联。</strong></p>
+<p>假定您管理一个含有标题广告服务的Web 站点。您与公司有协议，这些公司希望有人在拜访您的站点上的网页时显示他们的广告。每当一个拜访者点击您的页面一次，您就向该拜访者的浏览器提供了嵌在页面中的广告的一次服务，并且给公司估算一点费用。为了表示这些信息，要保存三个表（请参阅图1-1）。一个是 <strong>company</strong> 表，它含有公司名、编号、地址和电话号等列。另一个是 <strong>ad</strong> 表，它列出广告编号、拥有该广告的公司的编号以及每次点击时的计费数。第三个 <strong>hit</strong> 表按广告编号记录广告点击次数以及广告提供服务的日期。</p>
+<p><img src="1.png" alt></p>
+<p>上面是一个展示，数据库的经典使用案例，下面我们继续介绍数据库的 <strong>体系结构术语</strong></p>
+<p>在您使用 <strong>MySQL</strong> 时，实际正使用以下两个程序，因为 <strong>MySQL</strong> 采用的是客户机/服务器体系结构</p>
+<ul>
+<li>服务器是一个位于存放您的数据的机器上的程序。它监听从网络上传过来的客户机的请求并根据这些请求访问数据库的内容，以便向客户机提供它们所要求的信息。</li>
+<li>客户机是连接到数据库服务器的程序，这些程序告诉服务器需要什么信息的查询。</li>
+</ul>
+<p>对 MySQL 有了基础的了解之后，我们根据刚刚我们给出的实例来学习下 MySQL 的一些基本语法。</p>
+<h2 id="No-1-Sample"><a href="#No-1-Sample" class="headerlink" title="No.1 Sample"></a>No.1 Sample</h2><p>进入 MySQL 的命令行界面，我这里使用的 Navicate 的搜索界面可能后续的截图稍微有些不同，但是不影响我们的学习。</p>
+<p><strong>简单的搜索</strong><br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select now();</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| now()               |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">| 2020-04-10 15:46:51 |</span><br><span class="line">+<span class="comment">---------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span></span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">select</span> <span class="keyword">now</span>(),</span><br><span class="line">    -&gt; <span class="keyword">user</span>(),</span><br><span class="line">    -&gt; <span class="keyword">version</span>()</span><br><span class="line">    -&gt; ;</span><br><span class="line">+<span class="comment">---------------------+----------------+-----------+</span></span><br><span class="line">| now()               | user()         | version() |</span><br><span class="line">+<span class="comment">---------------------+----------------+-----------+</span></span><br><span class="line">| 2020-04-10 15:49:21 | root@localhost | 8.0.17    |</span><br><span class="line">+<span class="comment">---------------------+----------------+-----------+</span></span><br><span class="line">1 row in <span class="keyword">set</span></span><br></pre></td></tr></table></figure></p>
+<p>因为 MySQL 需要见到分号才发送查询到服务器，所以在单一的行上不需要键入分号。如果有必要可以将一个查询分为多行。<strong>另外大小写键入查询没有任何区别，但是规范上，我们用大写符号表示 SQL 关键字和函数名，用小写字符表示数据库、表和列名</strong>。</p>
+<h1 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h1><p>现在我们开始创建 <strong>samp_db</strong> 样例数据库及其表，填充这些表并对包含在这些表中的数据进行一些简单的查询。使用数据库设计如下几个步骤</p>
+<ul>
+<li>创建数据库</li>
+<li>创建数据库中的表</li>
+<li>对表进行数据插入、检索、修改或删除</li>
+</ul>
+<h2 id="Create-DB"><a href="#Create-DB" class="headerlink" title="Create DB"></a>Create DB</h2><p>首先我们需要创建数据库，我们在命令行输入如下代码<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; CREATE DATABASE samp_db;</span><br><span class="line">Query OK, 1 row affected</span><br></pre></td></tr></table></figure></p>
+<p><img src="2.png" alt="Navicate 可视化界面展示新创建的数据库"></p>
+<p>虽然我们使用的 Navicate 很好用，可视化的展示了数据库的变化。但是为了学习 MySQL 的基本语法，我们后续都会使用 SQL 语法来展示。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询当前数据库 发现结果并不为我们刚刚创建的 samp_db</span></span><br><span class="line">mysql&gt; SELECT DATABASE();</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| DATABASE() |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| world      |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 切换数据库 使用 USE 的语法来切换我们将要使用的数据库</span></span><br><span class="line">mysql&gt; <span class="keyword">USE</span> samp_db</span><br><span class="line">    -&gt; ;</span><br><span class="line">Database changed</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再次查询当前数据库</span></span><br><span class="line">mysql&gt; SELECT DATABASE();</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| DATABASE() |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">| samp_db    |</span><br><span class="line">+<span class="comment">------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+<h2 id="Create-Table"><a href="#Create-Table" class="headerlink" title="Create Table"></a>Create Table</h2><p>本节中，我们将创建样例数据库 samp_db 所需的表。在创建数据表之前，我们需要了解各自的数据类型都有哪些。</p>
+<p><img src="3.png" alt></p>
+<p><img src="4.png" alt></p>
+<p><img src="5.png" alt></p>
+<p>了解了数据类型之后，现在可以开始准备创建数据库表了。但是表需要哪些信息呢？</p>
+<ul>
+<li>表名</li>
+<li>表字段名</li>
+<li>定义每个表字段</li>
+</ul>
+<p>我们来创建一个表试试看效果，配合备注理解起来可能更加的便捷</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建一个表runoob_tb1  如果这个表名不存在的话 </span></span><br><span class="line">mysql&gt; CREATE TABLE IF NOT EXISTS `runoob_tb1`(</span><br><span class="line">    <span class="comment"># 列名 runoob_id int 表示数据类型 AUTO_INCREMENT 表示自增 一般用于主键 数值会自动加1</span></span><br><span class="line">    -&gt; `runoob_id` INT UNSIGNED AUTO_INCREMENT,</span><br><span class="line">    <span class="comment"># 列名 runoob_title VARCHAR括号中的数值表示该字段最长长度</span></span><br><span class="line">    <span class="comment"># NOT NULL 为字段属性 如果在数据库中输入该字段的数据为 NULL 就会报错</span></span><br><span class="line">    -&gt; `runoob_title` VARCHAR(100) NOT NULL,</span><br><span class="line">    -&gt; `runoob_author` VARCHAR(40) NOT NULL,</span><br><span class="line">    <span class="comment"># 没有任何设置 该字段数据类型为 DATE</span></span><br><span class="line">    -&gt; `submission_data` DATE,</span><br><span class="line">    <span class="comment"># 设置主键为 runoob_id</span></span><br><span class="line">    -&gt; PRIMARY KEY (`runoob_id`)</span><br><span class="line">    <span class="comment"># ENGINE 设置存储引擎，CHARSET 设置编码</span></span><br><span class="line">    -&gt; )ENGINE = InnoDB DEFAULT CHARSET=utf8;</span><br><span class="line">Query OK, 0 rows affected</span><br></pre></td></tr></table></figure>
+<p>结果如下</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show tables;</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| Tables_in_samp_db |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">| runoob_tb1        |</span><br><span class="line">+<span class="comment">-------------------+</span></span><br><span class="line">1 row in <span class="keyword">set</span></span><br><span class="line"></span><br><span class="line">mysql&gt; <span class="keyword">desc</span> runoob_tb1;</span><br><span class="line">+<span class="comment">-----------------+------------------+------+-----+---------+----------------+</span></span><br><span class="line">| Field           | Type             | Null | Key | Default | Extra          |</span><br><span class="line">+<span class="comment">-----------------+------------------+------+-----+---------+----------------+</span></span><br><span class="line">| runoob_id       | int(10) unsigned | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| runoob_title    | varchar(100)     | NO   |     | NULL    |                |</span><br><span class="line">| runoob_author   | varchar(40)      | NO   |     | NULL    |                |</span><br><span class="line">| submission_data | date             | YES  |     | NULL    |                |</span><br><span class="line">+<span class="comment">-----------------+------------------+------+-----+---------+----------------+</span></span><br><span class="line">4 rows in <span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+<p><img src="6.png" alt></p>
+<h2 id="DELETE-Table"><a href="#DELETE-Table" class="headerlink" title="DELETE Table"></a>DELETE Table</h2><p>将我们刚刚创建的表进行删除操作</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; DROP TABLE runoob_tb1;</span><br><span class="line">Query OK, 0 rows affected</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查询后发现当前没有表格存在</span></span><br><span class="line">mysql&gt; show tables;</span><br><span class="line">Empty <span class="keyword">set</span></span><br></pre></td></tr></table></figure>
+<h2 id="UPDATE-Table"><a href="#UPDATE-Table" class="headerlink" title="UPDATE Table"></a>UPDATE Table</h2><p>我们使用语句来插入数据，在执行插入之前，我们还需要将上面创建表格的代码重新运行一遍否则没有表给我们插入</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ul>
+<li><a href>Mysql教程</a></li>
+<li><a href="https://www.runoob.com/mysql/mysql-install.html" target="_blank" rel="noopener">菜鸟教程 Mysql</a></li>
+</ul>
+
+      </div>
+      
+      <footer class="post-footer">
+        <div class="post-tags">
+            <a href="/tags/Mysql/">Mysql</a>
+            </div>
+        
+        <nav class="post-nav"><a class="next" href="/2020/04/04/19-Boss-Recruitment-Data-Analysis/">
+        <span class="next-text nav-default">Boss Recruitment Data Analysis</span>
+        <span class="prev-text nav-mobile">下一篇</span>
+        <i class="iconfont icon-right"></i>
+      </a>
+    </nav></footer>
+    </article></div><div class="comments" id="comments"></div></div>
+      </main>
+
+      <footer id="footer" class="footer"><div class="social-links"><a href="mailto:afrunk7@gmail.com" class="iconfont icon-email" title="email"></a>
+        <a href="https://github.com/afrunk" class="iconfont icon-github" title="github"></a>
+        <a href="/atom.xml" class="iconfont icon-rss" title="rss"></a>
+    </div><div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://hexo.io/">Hexo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/ahonn/hexo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">&copy;2019 - 2020<span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">Afrunk</span>
+  </span>
+</div>
+</footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div><script type="text/javascript" src="/lib/jquery/jquery.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/lib/pjax/jquery.pjax.min.js"></script>
+  <script type="text/javascript" src="/lib/nprogress/nprogress.min.js"></script>
+  <script type="text/javascript" src="/js/src/even.js?v=2.11.0"></script>
+</body>
+</html>
